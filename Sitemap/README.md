@@ -1,3 +1,3 @@
 ## SITE MAP
 
-![Sitemap](/sitemap/img/Sitemap.png "Sitemap")
+![Sitemap](/Sitemap/img/Sitemap.png "Sitemap")
