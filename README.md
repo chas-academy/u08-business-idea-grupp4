@@ -2,6 +2,13 @@
 
 ## Installationsanvisningar
 
+För att köra projektet lokalt, följ dessa steg:
+
+- Klona projektet med hjälp av git clone https://github.com/chas-academy/u08-business-idea-grupp4.git
+- Installera dependencies med npm install
+- Starta dev servern med npm run dev
+- Öppna din webbläsare och navigera till http://localhost:5174/
+
 ## Vilket problem löser den här kodbasen?
 
 ## Litet exempel på användning
