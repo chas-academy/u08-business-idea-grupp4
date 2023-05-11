@@ -14,7 +14,12 @@ const RecipeSchema = new mongoose.Schema({
   steps: { type: Array, required: true },
   reviewScore: { type: Number, required: false },
   likes: { type: Number, required: false },
-  date: { type: Date, required: true },
+  createdAt: { type: Date, required: true },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
 });
 
 export const UserModel = mongoose.model("Recipe", RecipeSchema);
