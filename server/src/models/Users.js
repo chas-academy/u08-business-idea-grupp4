@@ -8,4 +8,4 @@ const UserSchema = new mongoose.Schema({
   bio: { type: String, required: false },
 });
 
-export const UserModel = mongoose.model("users", UserSchema);
+export const UserModel = mongoose.model("User", UserSchema);
