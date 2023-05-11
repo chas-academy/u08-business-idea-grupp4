@@ -1,16 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from './pages/home'
+import Auth from './pages/auth'
+import Login from './pages/login'
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <p className="text-red-600">
-        Click on the Vite and React logos to learn more
-      </p>
+    <Router>
+      <Routes>
+        <Route path='' element={<Home />} />
+        <Route path='/auth' element={<Auth />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
+    </Router>
     </>
   )
 }
