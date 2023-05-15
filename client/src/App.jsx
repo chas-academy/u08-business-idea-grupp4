@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/home'
 import Auth from './pages/auth'
 import Login from './pages/login'
+import CreatePost from './pages/CreatePost'
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Route path='' element={<Home />} />
         <Route path='/auth' element={<Auth />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/createpost' element={<CreatePost />} />
       </Routes>
     </Router>
     </>
