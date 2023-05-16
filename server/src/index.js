@@ -12,7 +12,7 @@ const port = 3001;
 app.use("/auth", userRouter);
 
 mongoose
-  .connect("mongodb://localhost:27017/u08")
+  .connect("mongodb+srv://bakerhaider:hmshood@cluster0.ts1n8aq.mongodb.net/Cluster0?retryWrites=true&w=majority")
   .then(() => {
     console.log("Connected to MongoDB");
   })
