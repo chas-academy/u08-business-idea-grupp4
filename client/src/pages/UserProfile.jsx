@@ -5,9 +5,9 @@ function UserProfile() {
     return (
         <>
         <div className="flex justify-center">
-            <div className="flex justify-between w-8/12 space-x-20 pt-20 pb-10">
+            <div className="flex justify-between w-7/12 pt-20 pb-10">
                 <div>
-                    <img className="h-36 w-36 rounded-full" src="https://weu-az-web-ca-cdn.azureedge.net/mediacontainer/medialibraries/mypetdoctor/images/blog-images/grey-kitten.webp?ext=.webp" alt="Profile Picture"/>
+                    <img className="h-48 w-48 rounded-full" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Profile Picture"/>
                 </div>
                 <div className="flex flex-col space-y-4">
                     <div className="flex flex-row space-x-16 pt-2">
@@ -31,14 +31,14 @@ function UserProfile() {
             </div>
         </div>
         <div className="flex justify-center">
-            <div className="flex flex-col w-8/12 space-y-3">
+            <div className="flex flex-col w-7/12 space-y-3">
                 <h5 className="text-xs font-bold">UserName</h5>
                 <p>Bio/Description</p>
             </div>
         </div>
         
         <div className="flex justify-center pt-20">
-            <div className="flex flex-col text-center w-8/12 space-y-3">
+            <div className="flex flex-col text-center w-7/12 space-y-3">
                 <h1>CATEGORIES</h1>
 
                 <div className="flex flex-row justify-center space-x-5">

@@ -7,7 +7,7 @@ function Navbar() {
        <div className="flex flex-wrap bg-slate-50 w-full h-screen">
         <div className="w-3/12 bg-white rounded p-3 shadow-lg max-md:hidden">
           <div className="flex items-center space-x-4 p-2 mb-5">
-              <img className="h-12 w-12 rounded-full" src="https://weu-az-web-ca-cdn.azureedge.net/mediacontainer/medialibraries/mypetdoctor/images/blog-images/grey-kitten.webp?ext=.webp" alt="Profile Picture"/>
+              <img className="h-12 w-12 rounded-full" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Profile Picture"/>
               <div>
                   <h4 className="font-semibold text-lg text-gray-700 capitalize font-poppins tracking-wide">UserName</h4>
               </div>
