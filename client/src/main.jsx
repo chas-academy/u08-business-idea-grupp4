@@ -4,6 +4,7 @@ import UserProfile from './pages/userProfile.jsx'
 import Navbar from './components/Navbar.jsx';
 import './index.css'
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Feed from './pages/Feed.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
     </div>
     </>,
     children: [
+      {
+        path: "",
+        element: <Feed />,
+      },
       {
       path: ":userId",
       element: <UserProfile />,
