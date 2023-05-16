@@ -14,14 +14,19 @@ const router = createBrowserRouter([
     </>
   },
   {
-    path: "userprofile",
+    path: "home",
     element: 
     <>
     <div className='flex flex-row'>
     <Navbar />
-    <UserProfile />
     </div>
-    </>
+    </>,
+    children: [
+      {
+      path: ":userId",
+      element: <UserProfile />,
+      },
+    ],
   },
 ]);
 
