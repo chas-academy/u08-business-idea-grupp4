@@ -4,7 +4,7 @@ function UserProfile() {
 
     return (
         <>
-            <h1>Hej</h1>
+            <h1>USER PROFILE</h1>
         </>
     ) 
 }

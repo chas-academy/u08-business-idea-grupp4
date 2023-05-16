@@ -2,7 +2,7 @@ function Feed() {
 
     return (
         <>
-            <h1>THIS IS THE FEED</h1>
+            <h1>FEED</h1>
         </>
     ) 
 }

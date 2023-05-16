@@ -5,6 +5,8 @@ import Navbar from './components/Navbar.jsx';
 import './index.css'
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Feed from './pages/Feed.jsx';
+import Search from './pages/Search.jsx';
+import CreatePost from './pages/CreatePost.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
       {
       path: ":userId",
       element: <UserProfile />,
+      },
+      {
+        path: "search",
+        element: <Search />,
+      },
+      {
+        path: "create-post",
+        element: <CreatePost />,
       },
     ],
   },
