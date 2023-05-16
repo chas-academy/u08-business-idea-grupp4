@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 function UserProfile() {
 
@@ -34,6 +34,24 @@ function UserProfile() {
             <div className="flex flex-col w-8/12 space-y-3">
                 <h5 className="text-xs font-bold">UserName</h5>
                 <p>Bio/Description</p>
+            </div>
+        </div>
+        
+        <div className="flex justify-center pt-20">
+            <div className="flex flex-col text-center w-8/12 space-y-3">
+                <h1>CATEGORIES</h1>
+
+                <div className="flex flex-row justify-center space-x-5">
+                    <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-2 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
+                        <p>Cake</p>
+                    </Link>
+                    <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-2 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
+                        <p>Pasta</p>
+                    </Link>
+                    <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-2 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
+                        <p>Drinks</p>
+                    </Link>
+                </div>
             </div>
         </div>
         </>

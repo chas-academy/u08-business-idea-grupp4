@@ -4,7 +4,7 @@ function Navbar() {
 
     return (
       <>
-       <div className="flex flex-wrap bg-gray-100 w-full h-screen">
+       <div className="flex flex-wrap bg-slate-50 w-full h-screen">
         <div className="w-3/12 bg-white rounded p-3 shadow-lg max-md:hidden">
           <div className="flex items-center space-x-4 p-2 mb-5">
               <img className="h-12 w-12 rounded-full" src="https://weu-az-web-ca-cdn.azureedge.net/mediacontainer/medialibraries/mypetdoctor/images/blog-images/grey-kitten.webp?ext=.webp" alt="Profile Picture"/>
