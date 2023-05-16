@@ -17,8 +17,10 @@ const router = createBrowserRouter([
     path: "userprofile",
     element: 
     <>
+    <div className='flex flex-row'>
     <Navbar />
     <UserProfile />
+    </div>
     </>
   },
 ]);
