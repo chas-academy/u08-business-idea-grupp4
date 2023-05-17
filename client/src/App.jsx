@@ -1,18 +1,15 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/home";
-import Auth from "./pages/auth";
-import Header from "./components/Header";
+import Login from "./components/Login";
+import IntroText from "./components/IntroText";
 
 function App() {
   return (
     <>
-      <Router>
-        <Header></Header>
-        <Routes>
-          <Route path="" element={<Home />} />
-          <Route path="/auth" element={<Auth />} />
-        </Routes>
-      </Router>
+      <div className="flex items-center flex-row mx-52 my-32">
+        <div className="flex items-center flex-row">
+          <IntroText></IntroText>
+          <Login></Login>
+        </div>
+      </div>
     </>
   );
 }
