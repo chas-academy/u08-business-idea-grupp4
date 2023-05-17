@@ -3,9 +3,9 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useForm } from 'react-hook-form'
+// import { useForm } from 'react-hook-form'
 
-const Auth = () => {
+const Register = () => {
   const [cookies, setCookies] = useCookies(["access_token"]);
   const navigate = useNavigate();
   
@@ -92,4 +92,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default Register;
