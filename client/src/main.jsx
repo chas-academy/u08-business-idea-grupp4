@@ -9,6 +9,7 @@ import Search from './pages/Search.jsx';
 import CreatePost from './pages/CreatePost.jsx';
 import Register from './pages/Register.jsx';
 import ForgotPassword from './pages/ForgotPassword.jsx';
+import CreateCategory from './pages/CreateCategory.jsx';
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "create-post",
         element: <CreatePost />,
+      },
+      {
+        path: "create-category",
+        element: <CreateCategory />,
       },
     ],
   },
