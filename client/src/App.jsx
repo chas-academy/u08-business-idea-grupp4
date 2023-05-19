@@ -1,15 +1,15 @@
-import Login from "./components/Login";
-import IntroText from "./components/IntroText";
+import { Outlet } from "react-router-dom";
+import Header from "./components/Header.jsx";
+import Footer from "./components/Footer.jsx";
 
 function App() {
   return (
     <>
-      <div className="flex items-center flex-row mx-52 my-32">
-        <div className="flex items-center flex-row">
-          <IntroText></IntroText>
-          <Login></Login>
-        </div>
+      <Header></Header>
+      <div className="flex flex-col items-center justify-center mt-0 min-h-screen">
+        <Outlet />
       </div>
+      <Footer></Footer>
     </>
   );
 }

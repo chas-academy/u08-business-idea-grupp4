@@ -7,8 +7,13 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Feed from "./pages/Feed.jsx";
 import Search from "./pages/Search.jsx";
 import CreatePost from "./pages/CreatePost.jsx";
+import LandingPage from "./pages/LandingPage.jsx";
 import Register from "./pages/Register.jsx";
 import ForgotPassword from "./pages/ForgotPassword.jsx";
+import About from "./pages/About.jsx";
+import Contact from "./pages/Contact.jsx";
+import Privacy from "./pages/Privacy.jsx";
+import Terms from "./pages/Terms.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,22 +23,36 @@ const router = createBrowserRouter([
         <App />
       </>
     ),
-  },
-  {
-    path: "/register",
-    element: (
-      <>
-        <Register />
-      </>
-    ),
-  },
-  {
-    path: "/forgot-password",
-    element: (
-      <>
-        <ForgotPassword />
-      </>
-    ),
+    children: [
+      {
+        path: "/",
+        element: <LandingPage />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/forgot-password",
+        element: <ForgotPassword />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/privacy",
+        element: <Privacy />,
+      },
+      {
+        path: "/terms",
+        element: <Terms />,
+      },
+    ],
   },
   {
     path: "home",

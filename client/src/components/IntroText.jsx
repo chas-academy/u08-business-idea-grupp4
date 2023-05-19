@@ -5,13 +5,10 @@ import { useNavigate } from "react-router-dom"; */
 
 const ComingSoon = () => {
   return (
-    <article className="flex flex-col w-64">
+    <article className="flex flex-col w-64 m-10">
       <h2 className="font-bold text-lg my-3">Coming Soon!</h2>
       <p>
-        Tasteful is Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-        Quasi fugiat corporis, error harum nostrum possimus ad dolorem itaque
-        repellat temporibus, molestias eaque dicta est aperiam perspiciatis
-        saepe nulla iste autem?
+        Tasteful is the number one recipe sharing platform for all food lovers.
       </p>
       <p className="text-sm my-3">Comming soon on:</p>
       <div className="flex items-center flex-row">

@@ -91,6 +91,7 @@ router.post("/post", upload.array("recipe", 5), async (req, res) => {
   }
 });
 
+// Get images
 router.get("/post/:id", async (req, res) => {
   try {
     const imageId = req.params.id;
