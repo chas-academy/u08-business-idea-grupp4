@@ -1,0 +1,36 @@
+.button{
+  
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--main-blue)
+}
+
+.comment{
+    width: calc(100% - 45px);  
+    border: none;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.icon{
+    cursor: pointer;
+    color: rgb(63, 63, 63);
+    border: none;
+}
+
+.action{
+    height: 50px;
+display: flex;
+}
+
+.action .icon{
+    font-size: 28px;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    transform: scale(1.1);
+    margin-right: 18px;
+     }
