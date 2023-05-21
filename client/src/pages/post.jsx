@@ -7,8 +7,7 @@ function post() {
         <div className='flex justify-between items-center p-2.5	border-b-2		'>
 
             <div className='m-2 flex justify-between items-center	' >
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXpvN9dGJd9fF0RZkekPwtCSCkQCXq7PvLXg&usqp=CAU" alt=""  className='w-8 h-8	object-cover mr-3.5	cursor-pointer	'/>
-                <span className='font-medium text-sm cursor-pointer'></span>
+            <img className="h-10 w-10 rounded-full" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Profile Picture"/>                <span className='font-medium text-sm cursor-pointer'></span>
             </div>
         </div>
         <div className='bg-neutral-950 m-0 p-0	'>
