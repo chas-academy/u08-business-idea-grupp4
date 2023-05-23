@@ -59,7 +59,7 @@ function Navbar() {
 
         </div>
 
-          <div className="w-9/12">
+          <div className="w-9/12 h-screen overflow-y-auto">
               <div className="p-4">
                   <Outlet />
               </div>
