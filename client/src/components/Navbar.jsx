@@ -5,8 +5,8 @@ function Navbar() {
     return (
       <>
       {/* NAVBAR DEKSTOP */}
-       <div className="lg:flex lg:flex-wrap bg-slate-50 lg:w-full h-screen">
-        <div className="w-3/12 bg-white rounded p-3 shadow-lg max-lg:hidden z-10">
+       <div className="xl:flex xl:flex-wrap bg-slate-50 xl:w-full h-screen">
+        <div className="w-3/12 bg-white rounded p-3 shadow-lg max-xl:hidden z-10">
           <div className="flex items-center space-x-4 p-2 mb-5">
               <img className="h-16 w-16 rounded-full" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Profile Picture"/>
               <div>
@@ -59,7 +59,7 @@ function Navbar() {
 
         </div>
 
-          <div className="lg:w-9/12 lg:h-screen lg:overflow-y-auto pb-20 bg-slate-50">
+          <div className="xl:w-9/12 xl:h-screen xl:overflow-y-auto pb-20 bg-slate-50">
               <div className="bg-slate-50">
                   <Outlet />
               </div>
@@ -67,7 +67,7 @@ function Navbar() {
       </div>  
 
       {/* NAVBAR PHONE */}
-        <div className="fixed bottom-0 left-0 z-50 w-full h-16 bg-white shadow-lg lg:hidden">
+        <div className="fixed bottom-0 left-0 z-50 w-full h-16 bg-white shadow-lg xl:hidden">
             <div className="grid h-full max-w-lg grid-cols-5 mx-auto text-center text-xs">
                 <Link to="" className="flex flex-col items-center text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
                     <span className="text-gray-600">
