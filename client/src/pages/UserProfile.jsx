@@ -41,17 +41,35 @@ function UserProfile() {
             <div className="flex flex-col text-center w-7/12 space-y-3">
                 <h1>CATEGORIES</h1>
 
-                <div className="flex flex-row justify-center space-x-5">
-                    <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-2 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
-                        <p>Cake</p>
-                    </Link>
-                    <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-2 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
-                        <p>Pasta</p>
-                    </Link>
-                    <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-2 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
-                        <p>Drinks</p>
+                <div className="flex flex-row">
+                    <div className="flex flex-row justify-center space-x-5 overflow-x-auto">
+                        <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-2 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
+                            <p>Cake</p>
+                        </Link>
+                        <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-2 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
+                            <p>Pasta</p>
+                        </Link>
+                        <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-2 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
+                            <p>Drinks</p>
+                        </Link>
+                        <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-2 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
+                            <p>Drinks</p>
+                        </Link>
+                        <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-2 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
+                            <p>Drinks</p>
+                        </Link>
+                        <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-2 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
+                            <p>Drinks</p>
+                        </Link>
+                        <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-2 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
+                            <p>Drinks</p>
+                        </Link>
+                    </div>
+                    <Link to="">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 mx-2 stroke-2 hover:text-blue-400" viewBox="0 0 48 48"><g fill="none" stroke="currentColor"><rect width="36" height="36" x="6" y="6" rx="3"/><path d="M24 16v16m-8-8h16"/></g></svg>
                     </Link>
                 </div>
+
             </div>
         </div>
         </>
