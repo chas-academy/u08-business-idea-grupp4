@@ -58,7 +58,7 @@ const router = createBrowserRouter([
     path: "home",
     element: (
       <>
-        <div className="flex flex-row">
+        <div className="xl:flex xl:flex-row">
           <Navbar />
         </div>
       </>
