@@ -1,11 +1,21 @@
+import { useNavigate, Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-function App() {
+
+
+import React from 'react'
+
+const App = () => {
+  let profileUrl = window.localStorage.getItem("userID")
 
   return (
-    <>
-      <div>LANDING PAGE & FEED</div>
-    </>
+    <div>
+       <Link to={`/profile/${profileUrl}`}>Profile</Link>
+       <ToastContainer />
+    </div>
   )
 }
 
 export default App
+

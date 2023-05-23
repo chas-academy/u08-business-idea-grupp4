@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import UserProfile from './pages/userProfile.jsx'
+import UserProfile from './pages/UserProfile.jsx';
 import Navbar from './components/Navbar.jsx';
 import './index.css'
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
@@ -9,6 +9,8 @@ import Search from './pages/Search.jsx';
 import CreatePost from './pages/CreatePost.jsx';
 import Register from './pages/Register.jsx';
 import ForgotPassword from './pages/ForgotPassword.jsx';
+import Login from './pages/login.jsx';
+import EditProfile from './pages/editProfile.jsx';
 
 const router = createBrowserRouter([
   {
@@ -20,17 +22,24 @@ const router = createBrowserRouter([
   },
   {
     path: "/register",
-    element: 
-    <>
-      <Register />
-    </>
+    element: <Register />
+
+  },
+  {
+    path: "/login",
+    element: <Login />
   },
   {
     path: "/forgot-password",
-    element: 
-    <>
-      <ForgotPassword />
-    </>
+    element: <ForgotPassword />
+  },
+  {
+    path: "/edit-profile/:id",
+    element: <EditProfile />
+  },
+  {
+    path: "/profile/:id",
+    element: <UserProfile />
   },
   {
     path: "home",
@@ -45,10 +54,7 @@ const router = createBrowserRouter([
         path: "",
         element: <Feed />,
       },
-      {
-      path: ":userId",
-      element: <UserProfile />,
-      },
+
       {
         path: "search",
         element: <Search />,
