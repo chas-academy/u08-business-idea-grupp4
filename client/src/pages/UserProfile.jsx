@@ -42,7 +42,7 @@ function UserProfile() {
                 <h1>CATEGORIES</h1>
 
                 <div className="flex flex-row">
-                    <div className="flex flex-row justify-center space-x-5 overflow-x-auto">
+                    <div className="flex flex-row justify-center space-x-5 overflow-x-auto pb-2">
                         <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-2 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
                             <p>Cake</p>
                         </Link>
@@ -66,11 +66,41 @@ function UserProfile() {
                         </Link>
                     </div>
                     <Link to="">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 mx-2 stroke-2 hover:text-blue-400" viewBox="0 0 48 48"><g fill="none" stroke="currentColor"><rect width="36" height="36" x="6" y="6" rx="3"/><path d="M24 16v16m-8-8h16"/></g></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 mt-1 mx-2 stroke-2 hover:text-blue-400" viewBox="0 0 48 48"><g fill="none" stroke="currentColor"><rect width="36" height="36" x="6" y="6" rx="3"/><path d="M24 16v16m-8-8h16"/></g></svg>
                     </Link>
                 </div>
 
             </div>
+        </div>
+
+        <div className="flex justify-center">
+            <div className="flex justify-center w-7/12 pt-20 space-x-5 border-b">
+                <Link to="" className="flex items-center justify-center space-x-3 hover:border-b hover:border-b-black focus:border-b-black w-36 pb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM8 20H4v-4h4v4zm0-6H4v-4h4v4zm0-6H4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4z"/></svg>
+                <p>POSTS</p>
+                </Link>
+                <Link to="" className="flex items-center justify-center space-x-3 hover:border-b hover:border-b-black focus:border-b-black w-36 pb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M5 21V5q0-.825.588-1.413T7 3h10q.825 0 1.413.588T19 5v16l-7-3l-7 3Zm2-3.05l5-2.15l5 2.15V5H7v12.95ZM7 5h10H7Z"/></svg>
+                <p>SAVED</p>
+                </Link>
+            </div>
+        </div>
+
+        <div className="flex justify-center pt-5">
+        <div className="grid grid-cols-3 gap-3 w-7/12">
+            <div className="bg-gray-200 h-48">bild</div>
+            <div className="bg-gray-200 h-48">bild</div>
+            <div className="bg-gray-200 h-48">bild</div>
+            <div className="bg-gray-200 h-48">bild</div>
+            <div className="bg-gray-200 h-48">bild</div>
+            <div className="bg-gray-200 h-48">bild</div>
+            <div className="bg-gray-200 h-48">bild</div>
+            <div className="bg-gray-200 h-48">bild</div>
+            <div className="bg-gray-200 h-48">bild</div>
+            <div className="bg-gray-200 h-48">bild</div>
+            <div className="bg-gray-200 h-48">bild</div>
+            <div className="bg-gray-200 h-48">bild</div>
+        </div>
         </div>
         </>
     ) 
