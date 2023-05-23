@@ -3,7 +3,6 @@ import Home from './pages/home'
 import Auth from './pages/auth'
 import Login from './pages/login'
 import Post from './pages/post'
-import Posste from './pages/posste'
 
 
 import CreatePost from './pages/CreatePost'
@@ -20,7 +19,6 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/createpost' element={<CreatePost />} />
         <Route path='/post' element={<Post />} />
-        <Route path='/posste' element={<Posste />} />
 
 
       </Routes>
