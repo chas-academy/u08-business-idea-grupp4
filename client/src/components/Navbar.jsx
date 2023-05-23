@@ -5,8 +5,8 @@ function Navbar() {
     return (
       <>
       {/* NAVBAR DEKSTOP */}
-       <div className="flex flex-wrap bg-slate-50 w-full h-screen">
-        <div className="w-3/12 bg-white rounded p-3 shadow-lg max-lg:hidden">
+       <div className="lg:flex lg:flex-wrap bg-slate-50 lg:w-full h-screen">
+        <div className="w-3/12 bg-white rounded p-3 shadow-lg max-lg:hidden z-10">
           <div className="flex items-center space-x-4 p-2 mb-5">
               <img className="h-16 w-16 rounded-full" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Profile Picture"/>
               <div>
@@ -59,8 +59,8 @@ function Navbar() {
 
         </div>
 
-          <div className="w-9/12 h-screen overflow-y-auto">
-              <div className="p-4">
+          <div className="lg:w-9/12 lg:h-screen lg:overflow-y-auto pb-20 bg-slate-50">
+              <div className="bg-slate-50">
                   <Outlet />
               </div>
           </div>

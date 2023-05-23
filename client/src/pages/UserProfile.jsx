@@ -5,7 +5,7 @@ function UserProfile() {
     return (
         <>
         <div className="flex justify-center">
-            <div className="flex justify-between w-7/12 pt-20 pb-10">
+            <div className="flex justify-between lg:w-7/12 pt-20 pb-10">
                 <div>
                     <img className="h-48 w-48 rounded-full" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Profile Picture"/>
                 </div>
