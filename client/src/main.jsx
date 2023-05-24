@@ -14,6 +14,7 @@ import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import Privacy from "./pages/Privacy.jsx";
 import Terms from "./pages/Terms.jsx";
+import EditProfile from "./pages/editProfile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
         path: "/terms",
         element: <Terms />,
       },
+      {
+        path: "edit-profile/:id",
+        element: <EditProfile />,
+      }
     ],
   },
   {
@@ -69,7 +74,7 @@ const router = createBrowserRouter([
         element: <Feed />,
       },
       {
-        path: ":userId",
+        path: "profile/:id",
         element: <UserProfile />,
       },
       {
@@ -79,7 +84,7 @@ const router = createBrowserRouter([
       {
         path: "create-post",
         element: <CreatePost />,
-      },
+      }
     ],
   },
 ]);
