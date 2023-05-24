@@ -1,6 +1,61 @@
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { useCookies } from "react-cookie";
+import { useNavigate, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 function UserProfile() {
+        const [username, setUsername] = useState("");
+        const [bio, setBio] = useState('')
+        const [cookies, , removeCookies] = useCookies(["access_token"]);
+        const navigate = useNavigate();
+        
+      
+        useEffect(() => {
+          const fetchUserProfile = async () => {
+            let userID = window.localStorage.getItem("userID");
+        
+            if (!userID) {
+            navigate('/login')
+            }
+        
+            try {
+              const response = await axios.get(`http://localhost:3001/auth/profile/${userID}`, {
+                headers: {
+                  Authorization: `Bearer ${cookies.access_token}`,
+                },
+              });
+        
+              console.log(response.data);
+              if (response.data && response.data.user) {
+                setUsername(response.data.user.username);
+                setBio(response.data.user?.bio)
+              }
+            } catch (error) {
+              console.error(error);
+            }
+          };
+        
+          fetchUserProfile();
+        }, [cookies.access_token, navigate]);
+        
+        const logout = () => {
+          removeCookies("access_token");
+          window.localStorage.removeItem("userID");
+          navigate("/register");
+        };
+      
+        useEffect(() => {
+          const storedUsername = window.localStorage.getItem("username");
+          if (storedUsername) {
+            setUsername(storedUsername);
+          }
+        }, []);
+      
+        useEffect(() => {
+          window.localStorage.setItem("username", username);
+        }, [username]);
+      
+        let profileUrl = window.localStorage.getItem('userID')
 
     return (
         <>
@@ -24,16 +79,16 @@ function UserProfile() {
                             <p>following</p>
                         </div>
                     </div>
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:text-lg text-xs">
+                    <Link to={`/edit-profile/${profileUrl}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:text-lg text-xs text-center">
                     Edit profile
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>
         <div className="flex justify-center">
             <div className="flex flex-col lg:w-7/12 w-11/12 space-y-3">
-                <h5 className="text-xs font-bold">mrfroggie</h5>
-                <p>🐸🍳 Cooking aficionado and ice cream enthusiast 🍦🔥 Sharing my culinary adventures and mouthwatering recipes with a splash of creativity! 🌱🌍 #FoodieFroggie #IceCreamDelights</p>
+                <h5 className="text-xs font-bold">{username}</h5>
+                <p>{bio}</p>
             </div>
         </div>
         
