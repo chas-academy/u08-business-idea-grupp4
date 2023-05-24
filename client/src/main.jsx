@@ -10,6 +10,7 @@ import CreatePost from './pages/CreatePost.jsx';
 import Register from './pages/Register.jsx';
 import ForgotPassword from './pages/ForgotPassword.jsx';
 import CreateCategory from './pages/CreateCategory.jsx';
+import ProfileP from './pages/profileP.jsx';
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
       {
         path: "create-category",
         element: <CreateCategory />,
+      },
+      {
+        path: "ProfileP",
+        element: <ProfileP />,
       },
     ],
   },

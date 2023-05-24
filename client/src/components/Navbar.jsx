@@ -4,7 +4,7 @@ function Navbar() {
 
     return (
       <>
-       <div className="flex flex-wrap bg-slate-50 w-full h-screen">
+       <div className="flex flex-wrap bg-slate-50 w-full">
         <div className="w-3/12 bg-white rounded p-3 shadow-lg max-md:hidden">
           <div className="flex items-center space-x-4 p-2 mb-5">
               <img className="h-12 w-12 rounded-full" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Profile Picture"/>
@@ -51,6 +51,14 @@ function Navbar() {
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5" viewBox="0 0 24 24"><path fill="currentColor" d="M11 13v3q0 .425.288.713T12 17q.425 0 .713-.288T13 16v-3h3q.425 0 .713-.288T17 12q0-.425-.288-.713T16 11h-3V8q0-.425-.288-.713T12 7q-.425 0-.713.288T11 8v3H8q-.425 0-.713.288T7 12q0 .425.288.713T8 13h3Zm-6 8q-.825 0-1.413-.588T3 19V5q0-.825.588-1.413T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.588 1.413T19 21H5Zm0-2h14V5H5v14ZM5 5v14V5Z"/></svg>
                     </span>
                     <p>Create category</p>
+                  </Link>
+              </li>
+              <li>
+                  <Link to="ProfileP" className="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
+                    <span className="text-gray-600">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5" viewBox="0 0 24 24"><path fill="currentColor" d="M11 13v3q0 .425.288.713T12 17q.425 0 .713-.288T13 16v-3h3q.425 0 .713-.288T17 12q0-.425-.288-.713T16 11h-3V8q0-.425-.288-.713T12 7q-.425 0-.713.288T11 8v3H8q-.425 0-.713.288T7 12q0 .425.288.713T8 13h3Zm-6 8q-.825 0-1.413-.588T3 19V5q0-.825.588-1.413T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.588 1.413T19 21H5Zm0-2h14V5H5v14ZM5 5v14V5Z"/></svg>
+                    </span>
+                    <p>ProfileP</p>
                   </Link>
               </li>
           </ul>
