@@ -102,14 +102,14 @@ function post() {
                 </g>
             </g>
         </svg>
-        <select className="text-sm text-white font-bold rounded bg-gray-500 border border-grey h-8 w-60 pl-2 pr-8 bg-white hover:border-gray-400 focus:outline-none appearance-none">
-            <option>⭐0</option>
-            <option>⭐1</option>
-            <option>⭐1.5</option>
-            <option>⭐2</option>
-            <option>⭐2.5</option>
-            <option>⭐3</option>
-            <option>⭐3.5</option>
+        <select className="text-sm text-white font-bold rounded bg-gray-500 border border-grey h-8 w-60 pl-2 pr-8 bg-greyhover:border-gray-400 focus:outline-none appearance-none">
+            <option>⭐ <br/> 0</option>
+            <option>⭐ <br/>1</option>
+            <option>⭐ <br/>1.5</option>
+            <option>⭐ 2</option>
+            <option>⭐ 2.5</option>
+            <option>⭐ 3</option>
+            <option>⭐ <br/>  3.5</option>
         </select>
    <button  className="px-3 font-bold	">Post</button>  
    </div>
@@ -163,7 +163,7 @@ function post() {
 </div>
   </div>
 
-  <div className=' px-10 pt-6'>
+  <div className=' px-10 pt-6 pb-8	'>
   <p className="mb-9 px-2 text-2xl font-bold trackig-tight text-black-900 dark:text-black">To do</p>
 <p className="ml-2 text-sm font-medium text-gray-900 dark:text-black-300">1.Blanda mjöl och salt i en bunke. Vispa i Hälften av mjölken och vispa till en slät smet. Vispa i resten av mjölken och äggen-</p>
  <br />
