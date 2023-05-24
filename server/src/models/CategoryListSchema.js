@@ -14,4 +14,7 @@ const CategoryListSchema = new mongoose.Schema({
   },
 });
 
-export const UserModel = mongoose.model("CategoryList", CategoryListSchema);
+export const CategoryListModel = mongoose.model(
+  "CategoryList",
+  CategoryListSchema
+);

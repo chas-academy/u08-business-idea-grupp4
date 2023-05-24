@@ -16,4 +16,4 @@ const CommentSchema = new mongoose.Schema({
   date: { type: Date, required: true },
 });
 
-export const UserModel = mongoose.model("Comment", CommentSchema);
+export const CommentsModel = mongoose.model("Comment", CommentSchema);
