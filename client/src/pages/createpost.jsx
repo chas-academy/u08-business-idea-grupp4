@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-
 function CreatePost() {
 /*   const [title,setTitle] = useState("")
   const [body,setBody]  = useState("") */
@@ -19,7 +18,7 @@ const postData=async()=>{
 })
  }
 
-  return (
+    return (
     <div className ="bg-gray-50 dark:bg-gray-900"
     style={{
           margin:"10px auto",
@@ -74,7 +73,7 @@ const postData=async()=>{
   
   
       </div>
-  )
+    ) 
 }
 
 export default CreatePost
