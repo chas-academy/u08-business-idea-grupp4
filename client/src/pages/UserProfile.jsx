@@ -10,12 +10,11 @@ function UserProfile() {
         const navigate = useNavigate();
    
         const userID = window.localStorage.getItem('userID');
-if (typeof userID !== 'undefined' && userID !== null) {
-  // User is logged in, allow access to the profile page
-} else {
-  // User is not logged in, redirect to the login page
-  navigate('/');
-}
+        if (typeof userID !== 'undefined' && userID !== null) {
+
+        } else {
+        navigate('/');
+        }
 
         
         useEffect(() => {
@@ -23,7 +22,7 @@ if (typeof userID !== 'undefined' && userID !== null) {
             let userID = window.localStorage.getItem("userID");
         
             if (!userID) {
-            navigate('/login')
+            navigate('/')
             }
         
             try {

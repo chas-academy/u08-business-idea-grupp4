@@ -7,11 +7,6 @@ function Navbar() {
     const [cookies, , removeCookies] = useCookies(["access_token"]);
     const navigate = useNavigate();
    
-    if (window.localStorage.getItem('userID') === undefined) {
-        navigate('/');
-    }
-  
-    
 
     const logout = () => {
       removeCookies("access_token");
