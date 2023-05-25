@@ -58,16 +58,18 @@ router.get('/profile/:id', authenticateToken, async  (req, res) => {
 router.put('/profile/:id', authenticateToken, async (req, res) => {
   try {
     const userId = req.user.id; 
-    const { bio, username } = req.body;
-
+    const { bio, username, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
     const user = await UserModel.findById(userId);
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
 
     user.bio = bio;
+    user.password = hashedPassword;
     user.username = username;
     await user.save();
+    
 
     res.json({ message: 'Profile updated successfully' });
   } catch (error) {

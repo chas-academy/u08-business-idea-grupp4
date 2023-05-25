@@ -8,8 +8,16 @@ function UserProfile() {
         const [bio, setBio] = useState('')
         const [cookies, , removeCookies] = useCookies(["access_token"]);
         const navigate = useNavigate();
+   
+        const userID = window.localStorage.getItem('userID');
+if (typeof userID !== 'undefined' && userID !== null) {
+  // User is logged in, allow access to the profile page
+} else {
+  // User is not logged in, redirect to the login page
+  navigate('/');
+}
+
         
-      
         useEffect(() => {
           const fetchUserProfile = async () => {
             let userID = window.localStorage.getItem("userID");
@@ -38,11 +46,9 @@ function UserProfile() {
           fetchUserProfile();
         }, [cookies.access_token, navigate]);
         
-        const logout = () => {
-          removeCookies("access_token");
-          window.localStorage.removeItem("userID");
-          navigate("/register");
-        };
+        if (!window.localStorage.getItem('userID')) {
+            navigate('/')
+        }
       
         useEffect(() => {
           const storedUsername = window.localStorage.getItem("username");
