@@ -8,7 +8,8 @@ function Navbar() {
        <div className="flex flex-wrap bg-slate-50 w-full h-screen">
         <div className="w-3/12 bg-white rounded p-3 shadow-lg max-lg:hidden">
           <div className="flex items-center space-x-4 p-2 mb-5">
-          <img className="h-16 w-16 rounded-full" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Profile Picture"/>              <div>
+              <img className="h-16 w-16 rounded-full" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Profile Picture"/>
+              <div>
                   <h4 className="font-semibold text-xl text-gray-700 capitalize font-poppins tracking-wide">UserName</h4>
               </div>
           </div>

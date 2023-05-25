@@ -1,30 +1,17 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Home from './pages/home'
-import Auth from './pages/auth'
-import Login from './pages/login'
-import Post from './pages/post'
-
-
-import CreatePost from './pages/CreatePost'
-
+import { Outlet } from "react-router-dom";
+import Header from "./components/Header.jsx";
+import Footer from "./components/Footer.jsx";
 
 function App() {
-
   return (
     <>
-    <Router>
-      <Routes>
-        <Route path='' element={<Home />} />
-        <Route path='/auth' element={<Auth />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/createpost' element={<CreatePost />} />
-        <Route path='/post' element={<Post />} />
-
-
-      </Routes>
-    </Router>
+      <Header></Header>
+      <div className="flex flex-col items-center justify-center mt-0 min-h-screen">
+        <Outlet />
+      </div>
+      <Footer></Footer>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
