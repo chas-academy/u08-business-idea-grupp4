@@ -39,14 +39,14 @@ const Search = () => {
     <div className="container mx-auto p-4">
       <input
         type="text"
-        className="bg-gray-50 border-2 border-gray-900 text-gray-900 sm:text-sm rounded-3xl block w-full p-2.5 "
+        className="bg-gray-100 border border-gray-300 text-gray-900 placeholder-gray-500 rounded-md p-2.5 w-full sm:w-64 mb-4"
         placeholder="Search"
         onChange={handleSearch}
       />
       <div className="flex gap-2 mb-4">
         <button
           className={`py-2 px-4 rounded-md ${
-            filter === 'all' ? 'bg-blue-500 text-white' : 'bg-gray-200'
+            filter === 'all' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
           }`}
           onClick={() => handleFilter('all')}
         >
@@ -54,7 +54,7 @@ const Search = () => {
         </button>
         <button
           className={`py-2 px-4 rounded-md ${
-            filter === 'food' ? 'bg-blue-500 text-white' : 'bg-gray-200'
+            filter === 'food' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
           }`}
           onClick={() => handleFilter('food')}
         >
@@ -62,7 +62,7 @@ const Search = () => {
         </button>
         <button
           className={`py-2 px-4 rounded-md ${
-            filter === 'cake' ? 'bg-blue-500 text-white' : 'bg-gray-200'
+            filter === 'cake' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
           }`}
           onClick={() => handleFilter('cake')}
         >
@@ -70,7 +70,7 @@ const Search = () => {
         </button>
         <button
           className={`py-2 px-4 rounded-md ${
-            filter === 'drink' ? 'bg-blue-500 text-white' : 'bg-gray-200'
+            filter === 'drink' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
           }`}
           onClick={() => handleFilter('drink')}
         >
@@ -79,7 +79,9 @@ const Search = () => {
       </div>
       <ul className="list-disc pl-6">
         {filteredItems.map((item, index) => (
-          <li key={index}>{item.name}</li>
+          <li key={index} className="text-gray-900">
+            {item.name}
+          </li>
         ))}
       </ul>
     </div>
