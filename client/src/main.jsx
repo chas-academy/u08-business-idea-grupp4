@@ -16,6 +16,8 @@ import Contact from "./pages/Contact.jsx";
 import Privacy from "./pages/Privacy.jsx";
 import Terms from "./pages/Terms.jsx";
 import EditProfile from "./pages/editProfile.jsx";
+import CreateCategory from "./pages/CreateCategory.jsx";
+import ProfileP from "./pages/profileP.jsx";
 
 const router = createBrowserRouter([
   {
