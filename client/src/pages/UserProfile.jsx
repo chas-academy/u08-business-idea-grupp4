@@ -38,11 +38,11 @@ function UserProfile() {
           fetchUserProfile();
         }, [cookies.access_token, navigate]);
         
-        const logout = () => {
-          removeCookies("access_token");
-          window.localStorage.removeItem("userID");
-          navigate("/register");
-        };
+        // const logout = () => {
+        //   removeCookies("access_token");
+        //   window.localStorage.removeItem("userID");
+        //   navigate("/register");
+        // };
       
         useEffect(() => {
           const storedUsername = window.localStorage.getItem("username");
