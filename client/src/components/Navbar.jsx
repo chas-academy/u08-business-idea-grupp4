@@ -1,21 +1,32 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+
 
 function Navbar() {
+    let profileUrl = window.localStorage.getItem("userID");
+    const [cookies, , removeCookies] = useCookies(["access_token"]);
 
+    const navigate = useNavigate();
+
+    const logout = () => {
+      removeCookies("access_token");
+      window.localStorage.removeItem("userID");
+      navigate("/");
+    };
     return (
       <>
       {/* NAVBAR DEKSTOP */}
-       <div className="flex flex-wrap bg-slate-50 w-full h-screen">
-        <div className="w-3/12 bg-white rounded p-3 shadow-lg max-lg:hidden">
+       <div className="xl:flex xl:flex-wrap bg-slate-50 xl:w-full h-screen">
+        <div className="w-3/12 bg-white rounded p-3 shadow-lg max-xl:hidden z-10">
           <div className="flex items-center space-x-4 p-2 mb-5">
-              <img className="h-16 w-16 rounded-full" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Profile Picture"/>
+              <img className="h-16 w-16 rounded-full object-cover" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Profile Picture"/>
               <div>
-                  <h4 className="font-semibold text-xl text-gray-700 capitalize font-poppins tracking-wide">UserName</h4>
+                  <h4 className="font-semibold text-xl text-gray-700 capitalize font-poppins tracking-wide">mrfroggie</h4>
               </div>
           </div>
           <ul className="space-y-2 text-lg">
               <li>
-                  <Link to=":userId" className="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
+                  <Link to={`profile/${profileUrl}`} className="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
                       <span className="text-gray-600">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-6" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2M7.07 18.28c.43-.9 3.05-1.78 4.93-1.78s4.5.88 4.93 1.78A7.893 7.893 0 0 1 12 20c-1.86 0-3.57-.64-4.93-1.72m11.29-1.45c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33A7.928 7.928 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.5-1.64 4.83M12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6m0 5a1.5 1.5 0 0 1-1.5-1.5A1.5 1.5 0 0 1 12 8a1.5 1.5 0 0 1 1.5 1.5A1.5 1.5 0 0 1 12 11Z"/></svg>
                       </span>
@@ -49,25 +60,24 @@ function Navbar() {
           </ul>
 
           <div className="absolute bottom-5 space-y-2 text-lg">
-            <Link to="/" className="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
-              <span className="text-gray-600">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6" viewBox="0 0 24 24"><path fill="currentColor" d="M15.325 16.275q-.275-.325-.275-.737t.275-.688l1.85-1.85H10q-.425 0-.713-.288T9 12q0-.425.288-.713T10 11h7.175l-1.85-1.85q-.3-.3-.3-.713t.3-.712q.275-.3.688-.3t.687.275l3.6 3.6q.15.15.213.325t.062.375q0 .2-.062.375t-.213.325l-3.6 3.6q-.325.325-.713.288t-.662-.313ZM5 21q-.825 0-1.413-.588T3 19V5q0-.825.588-1.413T5 3h6q.425 0 .713.288T12 4q0 .425-.288.713T11 5H5v14h6q.425 0 .713.288T12 20q0 .425-.288.713T11 21H5Z"/></svg>
+            <button onClick={logout} className="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
+            <span className="text-gray-600">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 pr-2" viewBox="0 0 24 24"><path fill="currentColor" d="M15.325 16.275q-.275-.325-.275-.737t.275-.688l1.85-1.85H10q-.425 0-.713-.288T9 12q0-.425.288-.713T10 11h7.175l-1.85-1.85q-.3-.3-.3-.713t.3-.712q.275-.3.688-.3t.687.275l3.6 3.6q.15.15.213.325t.062.375q0 .2-.062.375t-.213.325l-3.6 3.6q-.325.325-.713.288t-.662-.313ZM5 21q-.825 0-1.413-.588T3 19V5q0-.825.588-1.413T5 3h6q.425 0 .713.288T12 4q0 .425-.288.713T11 5H5v14h6q.425 0 .713.288T12 20q0 .425-.288.713T11 21H5Z"/></svg>
               </span>
-              <p>Logout</p>
-            </Link>
+              Logout</button>
           </div>
 
         </div>
 
-          <div className="w-9/12">
-              <div className="p-4">
+          <div className="xl:w-9/12 xl:h-screen xl:overflow-y-auto pb-20 bg-slate-50">
+              <div className="bg-slate-50">
                   <Outlet />
               </div>
           </div>
       </div>  
 
       {/* NAVBAR PHONE */}
-        <div className="fixed bottom-0 left-0 z-50 w-full h-16 bg-white shadow-lg lg:hidden">
+        <div className="fixed bottom-0 left-0 z-50 w-full h-16 bg-white shadow-lg xl:hidden">
             <div className="grid h-full max-w-lg grid-cols-5 mx-auto text-center text-xs">
                 <Link to="" className="flex flex-col items-center text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
                     <span className="text-gray-600">
@@ -87,18 +97,16 @@ function Navbar() {
                     </span>
                     <p>Create post</p>
                   </Link>
-                  <Link to=":userId" className="flex flex-col items-center text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
+                  <Link to={`profile/${profileUrl}`} className="flex flex-col items-center text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
                       <span className="text-gray-600">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-6" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2M7.07 18.28c.43-.9 3.05-1.78 4.93-1.78s4.5.88 4.93 1.78A7.893 7.893 0 0 1 12 20c-1.86 0-3.57-.64-4.93-1.72m11.29-1.45c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33A7.928 7.928 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.5-1.64 4.83M12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6m0 5a1.5 1.5 0 0 1-1.5-1.5A1.5 1.5 0 0 1 12 8a1.5 1.5 0 0 1 1.5 1.5A1.5 1.5 0 0 1 12 11Z"/></svg>
                       </span>
                       <p>Profile</p>
                   </Link>
-                  <Link to="/" className="flex flex-col items-center text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
-                    <span className="text-gray-600">
+                  <button onClick={logout} className="flex flex-col items-center text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline"><span className="text-gray-600">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-6" viewBox="0 0 24 24"><path fill="currentColor" d="M15.325 16.275q-.275-.325-.275-.737t.275-.688l1.85-1.85H10q-.425 0-.713-.288T9 12q0-.425.288-.713T10 11h7.175l-1.85-1.85q-.3-.3-.3-.713t.3-.712q.275-.3.688-.3t.687.275l3.6 3.6q.15.15.213.325t.062.375q0 .2-.062.375t-.213.325l-3.6 3.6q-.325.325-.713.288t-.662-.313ZM5 21q-.825 0-1.413-.588T3 19V5q0-.825.588-1.413T5 3h6q.425 0 .713.288T12 4q0 .425-.288.713T11 5H5v14h6q.425 0 .713.288T12 20q0 .425-.288.713T11 21H5Z"/></svg>
                     </span>
-                    <p>Logout</p>
-                  </Link>
+                    Log Out</button>
             </div>
         </div>
       </>

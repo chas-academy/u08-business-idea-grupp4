@@ -18,7 +18,7 @@ const Login = () => {
       });
       setCookies("access_token", response.data.token);
       window.localStorage.setItem("userID", response.data.userID);
-      navigate("/");
+      navigate("/home");
     } catch (error) {}
   };
 
