@@ -1,12 +1,12 @@
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import UserProfile from "./pages/UserProfile.jsx";
-import Navbar from "./components/Navbar.jsx"; 
+import Navbar from "./components/Navbar.jsx";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Feed from "./pages/Feed.jsx";
 import Search from "./pages/Search.jsx";
-import CreatePost from "./pages/createpost.jsx";
+import CreatePost from "./pages/CreatePost.jsx";
 import LandingPage from "./pages/LandingPage.jsx";
 import Register from "./pages/Register.jsx";
 import ForgotPassword from "./pages/ForgotPassword.jsx";
@@ -17,6 +17,7 @@ import Terms from "./pages/Terms.jsx";
 import EditProfile from "./pages/editProfile.jsx";
 import CreateCategory from "./pages/CreateCategory.jsx";
 import ProfileP from "./pages/profileP.jsx";
+import Login from "./components/Login.jsx";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "edit-profile/:id",
         element: <EditProfile />,
+      },
+      {
+        path: "login",
+        element: <Login />,
       }
     ],
   },
@@ -96,7 +101,7 @@ const router = createBrowserRouter([
         element: <ProfileP />,
       },
     ],
-  }, 
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

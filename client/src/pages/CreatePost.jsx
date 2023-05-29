@@ -2,7 +2,6 @@ import React from 'react'
 
 function CreatePost() {
 
-
   return (
     <div className ="bg-gray-50 dark:bg-gray-900">
   
