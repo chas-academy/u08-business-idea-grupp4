@@ -5,12 +5,13 @@ import { useCookies } from "react-cookie";
 function Navbar() {
     let profileUrl = window.localStorage.getItem("userID");
     const [cookies, , removeCookies] = useCookies(["access_token"]);
-
     const navigate = useNavigate();
+   
 
     const logout = () => {
       removeCookies("access_token");
       window.localStorage.removeItem("userID");
+      window.localStorage.removeItem("username")
       navigate("/");
     };
     return (

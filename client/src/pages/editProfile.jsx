@@ -4,13 +4,14 @@ import { useCookies } from "react-cookie";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
-useNavigate
+
 
 
 
 const EditProfile = () => {
     const [username, setUsername] = useState('')
     const [bio, setBio] = useState('')
+    const [password, setPassword] = useState('')
 
     const [cookies, , removeCookies] = useCookies(["access_token"]);
     let userID = window.localStorage.getItem('userID')
@@ -23,7 +24,7 @@ const EditProfile = () => {
     }
     
     const handleUpdateProfile = () => {
-        axios.put(`http://localhost:3001/auth/profile/${userID}`, { bio, username }, {
+        axios.put(`http://localhost:3001/auth/profile/${userID}`, { bio, username, password }, {
             headers: {
                 Authorization: `Bearer ${cookies.access_token}`
             }
@@ -33,6 +34,7 @@ const EditProfile = () => {
             Notify()
             setUsername('')
             setBio('')
+            setUsername('')
 
             navigate(`/home/profile/${userID}`)
         })
@@ -57,8 +59,10 @@ const EditProfile = () => {
                   </div>
     
                   <div>
-                   
-                      <input type="text" id='bio' placeholder='Bio' value={bio} onChange={(e) => setBio(e.target.value)} className="bg-gray-50 border-2 border-gray-900 text-gray-900 sm:text-sm rounded-3xl block w-full p-2.5"   />
+                      <input type="text" id='password' placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)} className="bg-gray-50 border-2 border-gray-900 text-gray-900 sm:text-sm rounded-3xl block w-full p-2.5"   />
+                  </div>
+                  <div>
+                      <textarea type="text" id='bio' placeholder='Bio' value={bio} onChange={(e) => setBio(e.target.value)} className="bg-gray-50 border-2 border-gray-900 text-gray-900 sm:text-sm rounded-3xl block w-full p-2.5"   />
                   </div>
                
                   <button  onClick={handleUpdateProfile} className="w-full focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-3xl text-sm px-5 py-2.5 text-center bg-black text-white">SAVE</button>

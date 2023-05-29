@@ -5,45 +5,29 @@ import { ImageModel } from "../models/ImageSchema.js";
 
 const router = express.Router();
 
+const storage = multer.diskStorage({
+  destination: "/uploads",
+  filename: (req, file, callback) => {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    const extension = file.originalname.split(".").pop();
+    callback(null, file.fieldname + "-" + uniqueSuffix + "." + extension);
+  },
+});
+
 const upload = multer({ dest: "uploads/" });
 
 // Upload profile picture
-router.post("/profile", upload.single("avatar"), async (req, res) => {
+router.post("/profile-image", upload.single("avatar"), async (req, res) => {
   try {
-    const name = req.body.filename;
+    const name = req.file.originalname;
     const filename = req.file.path;
+    const fileType = req.file.mimetype;
 
     const image = await ImageModel.create({
       name,
       img: {
         data: await fs.promises.readFile(filename),
-        contentType: "image/png",
-      },
-    });
-
-    console.log("Image is saved");
-    res.status(200).json({ message: "Image uploaded successfully" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      error: "Failed to upload image",
-      errormessage: error.message,
-      reqs: req.filename,
-    });
-  }
-});
-
-// Upload One recipe picture
-router.post("/post", upload.single("recipe"), async (req, res) => {
-  try {
-    const name = req.body.filename;
-    const filename = req.file.path;
-
-    const image = await ImageModel.create({
-      name,
-      img: {
-        data: await fs.promises.readFile(filename),
-        contentType: "image/png",
+        contentType: fileType,
       },
     });
 
@@ -60,18 +44,19 @@ router.post("/post", upload.single("recipe"), async (req, res) => {
 });
 
 // Upload multiple recipe pictures
-router.post("/post", upload.array("recipe", 5), async (req, res) => {
+router.post("/recipe-images", upload.array("recipe", 10), async (req, res) => {
   try {
     const files = req.files;
     const imagePromises = files.map(async (file) => {
       const name = file.originalname;
       const filename = file.path;
+      const fileType = file.mimetype;
 
       const image = await ImageModel.create({
         name,
         img: {
           data: await fs.promises.readFile(filename),
-          contentType: "image/png",
+          contentType: fileType,
         },
       });
 
@@ -92,7 +77,7 @@ router.post("/post", upload.array("recipe", 5), async (req, res) => {
 });
 
 // Get images
-router.get("/post/:id", async (req, res) => {
+router.get("/get/:id", async (req, res) => {
   try {
     const imageId = req.params.id;
     const image = await ImageModel.findById(imageId);

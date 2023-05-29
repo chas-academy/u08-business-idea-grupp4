@@ -8,14 +8,21 @@ function UserProfile() {
         const [bio, setBio] = useState('')
         const [cookies, , removeCookies] = useCookies(["access_token"]);
         const navigate = useNavigate();
+   
+        const userID = window.localStorage.getItem('userID');
+        if (typeof userID !== 'undefined' && userID !== null) {
+
+        } else {
+        navigate('/');
+        }
+
         
-      
         useEffect(() => {
           const fetchUserProfile = async () => {
             let userID = window.localStorage.getItem("userID");
         
             if (!userID) {
-            navigate('/login')
+            navigate('/')
             }
         
             try {
@@ -38,11 +45,9 @@ function UserProfile() {
           fetchUserProfile();
         }, [cookies.access_token, navigate]);
         
-        // const logout = () => {
-        //   removeCookies("access_token");
-        //   window.localStorage.removeItem("userID");
-        //   navigate("/register");
-        // };
+        if (!window.localStorage.getItem('userID')) {
+            navigate('/')
+        }
       
         useEffect(() => {
           const storedUsername = window.localStorage.getItem("username");
