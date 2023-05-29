@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 
 function CreatePost() {
-/*   const [title,setTitle] = useState("")
-  const [body,setBody]  = useState("") */
+//   const [title,setTitle] = useState("")
+//   const [body,setBody]  = useState("")
   const [image,setImage]  = useState("")
 
 const postData=async()=>{
