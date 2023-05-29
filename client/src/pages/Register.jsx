@@ -32,6 +32,8 @@ const Register = () => {
       passwordRef.current.value = ''
     } catch (error) {
       console.log(error);
+      console.log('Could not register');
+      toast('Email or username already used, choose another one!');
     }
   };
 
