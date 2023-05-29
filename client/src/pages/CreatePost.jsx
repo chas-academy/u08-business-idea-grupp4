@@ -1,10 +1,6 @@
 import React from 'react'
 
 function CreatePost() {
-//   const [title,setTitle] = useState("")
-//   const [body,setBody]  = useState("")
-  const [image,setImage]  = useState("")
-
 
   return (
     <div className ="bg-gray-50 dark:bg-gray-900">
