@@ -1,17 +1,58 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 
 function Navbar() {
     let profileUrl = window.localStorage.getItem("userID");
     const [cookies, , removeCookies] = useCookies(["access_token"]);
+    const [profilePicture, setProfilePicture] = useState('') 
+    let userID = window.localStorage.getItem("userID");
+    const [username, setUsername] = useState("");
+
     const navigate = useNavigate();
    
+
+
+    
+    useEffect(() => {
+      const fetchUserProfile = async () => {
+        let userID = window.localStorage.getItem("userID");
+    
+        if (typeof userID !== 'undefined' && userID !== null) {
+
+        } else {
+        navigate('/');
+        }
+    
+        try {
+          const response = await axios.get(`http://localhost:3001/auth/profile/${userID}`, {
+            headers: {
+              Authorization: `Bearer ${cookies.access_token}`,
+            },
+          });
+    
+          console.log(response.data);
+          if (response.data && response.data.user) {
+            setUsername(response.data.user.username);
+            setProfilePicture(response.data.user?.profilePicture)
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      };
+    
+      fetchUserProfile();
+    }, [cookies.access_token, navigate]);
+    
+   
+
 
     const logout = () => {
       removeCookies("access_token");
       window.localStorage.removeItem("userID");
-      window.localStorage.removeItem("username")
+
       navigate("/");
     };
     return (
@@ -20,9 +61,21 @@ function Navbar() {
        <div className="xl:flex xl:flex-wrap bg-slate-50 xl:w-full h-screen">
         <div className="w-3/12 bg-white rounded p-3 shadow-lg max-xl:hidden z-10">
           <div className="flex items-center space-x-4 p-2 mb-5">
-              <img className="h-16 w-16 rounded-full object-cover" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Profile Picture"/>
+          {!profilePicture ? (
+                      <img
+                      className="h-16 w-16 rounded-full object-cover"
+                      src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg"
+                      alt="Profile Picture"
+                    />
+                   ) : (
+                    <img
+                    className="h-16 w-16 rounded-full object-cover"
+                    src={profilePicture}
+                    alt="Profile Picture"
+                    />
+                   )}
               <div>
-                  <h4 className="font-semibold text-xl text-gray-700 capitalize font-poppins tracking-wide">mrfroggie</h4>
+                  <h4 className="font-semibold text-xl text-gray-700 capitalize font-poppins tracking-wide"> {username} </h4>
               </div>
           </div>
           <ul className="space-y-2 text-lg">

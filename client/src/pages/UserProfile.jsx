@@ -8,21 +8,17 @@ function UserProfile() {
         const [bio, setBio] = useState('')
         const [cookies, , removeCookies] = useCookies(["access_token"]);
         const navigate = useNavigate();
-   
-        const userID = window.localStorage.getItem('userID');
-        if (typeof userID !== 'undefined' && userID !== null) {
-
-        } else {
-        navigate('/');
-        }
+        const [profilePicture, setProfilePicture] = useState('')        
 
         
         useEffect(() => {
           const fetchUserProfile = async () => {
             let userID = window.localStorage.getItem("userID");
         
-            if (!userID) {
-            navigate('/')
+            if (typeof userID !== 'undefined' && userID !== null) {
+
+            } else {
+            navigate('/');
             }
         
             try {
@@ -36,6 +32,7 @@ function UserProfile() {
               if (response.data && response.data.user) {
                 setUsername(response.data.user.username);
                 setBio(response.data.user?.bio)
+                setProfilePicture(response.data.user?.profilePicture)
               }
             } catch (error) {
               console.error(error);
@@ -45,29 +42,31 @@ function UserProfile() {
           fetchUserProfile();
         }, [cookies.access_token, navigate]);
         
-        if (!window.localStorage.getItem('userID')) {
-            navigate('/')
-        }
-      
-        useEffect(() => {
-          const storedUsername = window.localStorage.getItem("username");
-          if (storedUsername) {
-            setUsername(storedUsername);
-          }
-        }, []);
-      
-        useEffect(() => {
-          window.localStorage.setItem("username", username);
-        }, [username]);
+       
+
+    
       
         let profileUrl = window.localStorage.getItem('userID')
+        
 
     return (
         <>
         <div className="flex justify-center">
             <div className="flex justify-between lg:w-7/12 w-11/12 sm:pt-20 pt-10 pb-10 sm:px-12">
                 <div>
-                    <img className="sm:h-48 sm:w-48 w-32 h-32 rounded-full object-cover" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Profile Picture"/>
+                   {!profilePicture ? (
+                      <img
+                      className="sm:h-48 sm:w-48 w-32 h-32 rounded-full object-cover"
+                      src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg"
+                      alt="Profile Picture"
+                    />
+                   ) : (
+                    <img
+                    className="sm:h-48 sm:w-48 w-32 h-32 rounded-full object-cover"
+                    src={profilePicture}
+                    alt="Profile Picture"
+                    />
+                   )}
                 </div>
                 <div className="flex flex-col space-y-4 ml-5">
                     <div className="flex flex-row sm:space-x-16 space-x-6 pt-2 text-xs">
