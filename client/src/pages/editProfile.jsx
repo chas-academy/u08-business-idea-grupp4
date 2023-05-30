@@ -46,10 +46,10 @@ const EditProfile = () => {
             EDIT PROFILE
           </h1>
           <div>
-            <img className="" src={profilePicture} alt="Profile Picture" />
+            <img className="sm:h-48 sm:w-48 w-32 h-32 rounded-full object-cover" src={profilePicture} alt="Profile Picture" />
           </div>
           <div>
-            <input type="text" id="profilePicture" placeholder="profilePicture" value={profilePicture} onChange={(e) => setProfilePicture(e.target.value)} className="bg-gray-50 border-2 border-gray-900 text-gray-900 sm:text-sm rounded-3xl block w-full p-2.5" />
+            <input type="text" id="profilePicture" placeholder="URL..." value={profilePicture} onChange={(e) => setProfilePicture(e.target.value)} className="bg-gray-50 border-2 border-gray-900 text-gray-900 sm:text-sm rounded-3xl block w-full p-2.5" />
           </div>
           <div>
             <input type="text" id="username" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} className="bg-gray-50 border-2 border-gray-900 text-gray-900 sm:text-sm rounded-3xl block w-full p-2.5" />
