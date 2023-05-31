@@ -4,6 +4,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import { userRouter } from "./routes/users.js";
 import { imageRouter } from "./routes/images.js";
+import { categoryRouter } from "./routes/category.js";
 
 const app = express();
 app.use(express.json());
@@ -13,10 +14,11 @@ const port = 3001;
 
 app.use("/auth", userRouter);
 app.use("/auth", imageRouter);
+app.use("/category", categoryRouter);
 
 mongoose
-  .connect(
-    "mongodb://localhost:27017/u08" /* "mongodb+srv://bakerhaider:hmshood@cluster0.ts1n8aq.mongodb.net/Cluster0?retryWrites=true&w=majority" */
+.connect(
+  "mongodb+srv://bakerhaider:hmshood@cluster0.ts1n8aq.mongodb.net/Cluster0?retryWrites=true&w=majority"
   )
   .then(() => {
     console.log("Connected to MongoDB");

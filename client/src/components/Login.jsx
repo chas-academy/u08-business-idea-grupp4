@@ -2,12 +2,18 @@ import { useState } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [_, setCookies] = useCookies(["access_token"]);
   const navigate = useNavigate();
+
+  const Notify = () => {
+    toast('Wrong email or password.')
+}
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -16,11 +22,30 @@ const Login = () => {
         email,
         password,
       });
-      setCookies("access_token", response.data.token);
-      window.localStorage.setItem("userID", response.data.userID);
-      navigate("/");
-    } catch (error) {}
+      if (response.status === 200) {
+        setCookies("access_token", response.data.token);
+        window.localStorage.setItem("userID", response.data.userID);
+
+        const userID = window.localStorage.getItem('userID');
+        if (userID !== 'undefined') {
+          navigate('/home');
+          
+        } else {
+          navigate('/');
+          Notify()
+        }
+      } else {
+        console.log("Login failed");
+        navigate('/');
+        
+      }
+    } catch (error) {
+      console.log(error);
+      navigate('/');
+    }
   };
+  
+  
 
   return (
     <section className="m-10">
@@ -66,8 +91,10 @@ const Login = () => {
                 type="submit"
                 className="w-full focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-3xl text-sm px-5 py-2.5 text-center bg-black text-white"
               >
-                Create an account
+                Login
               </button>
+              {<p className='p-3 text-black'>{Notify}</p>} 
+                    <ToastContainer />
             </form>
           </div>
         </div>
