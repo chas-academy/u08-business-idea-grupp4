@@ -12,9 +12,6 @@ function Navbar() {
 
     const navigate = useNavigate();
    
-
-
-    
     useEffect(() => {
       const fetchUserProfile = async () => {
         let userID = window.localStorage.getItem("userID");
@@ -45,15 +42,13 @@ function Navbar() {
       fetchUserProfile();
     }, [cookies.access_token, navigate]);
     
-   
-
-
     const logout = () => {
       removeCookies("access_token");
       window.localStorage.removeItem("userID");
 
       navigate("/");
     };
+    
     return (
       <>
       {/* NAVBAR DEKSTOP */}
