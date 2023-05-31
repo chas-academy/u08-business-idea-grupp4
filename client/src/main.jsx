@@ -19,6 +19,9 @@ import CreateCategory from "./pages/CreateCategory.jsx";
 import ProfileP from "./pages/profileP.jsx";
 import Login from "./components/Login.jsx";
 import Post from "./pages/post.jsx";
+import CategoryFeed from "./components/Feed/CategoryFeed.jsx";
+import PostFeed from "./components/Feed/PostFeed.jsx";
+import SavedFeed from "./components/Feed/SavedFeed.jsx";
 
 const router = createBrowserRouter([
   {
@@ -104,6 +107,18 @@ const router = createBrowserRouter([
       {
         path: "post",
         element: <Post />,
+      },
+      {
+        path: "category",
+        element: <CategoryFeed />,
+      },
+      {
+        path: "post",
+        element: <PostFeed />,
+      },
+      {
+        path: "saved",
+        element: <SavedFeed />,
       }
     ],
   },
