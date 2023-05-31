@@ -84,7 +84,7 @@ function UserProfile() {
                             <p>following</p>
                         </div>
                     </div>
-                    <Link to={`/edit-profile/${profileUrl}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:text-lg text-xs text-center">
+                    <Link to={`/home/edit-profile/${profileUrl}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:text-lg text-xs text-center">
                     Edit profile
                     </Link>
                 </div>
