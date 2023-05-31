@@ -4,8 +4,6 @@ function CategoryFeed() {
 
     return (
         <>
-        <div className="flex justify-center pt-5">
-        <div className="grid grid-cols-3 sm:gap-3 gap-1 lg:w-7/12 w-11/12">
             <div className="bg-gray-200 sm:h-48 h-28">
                 <Link to="">
                     <img className="h-full w-full object-cover" src="https://static8.depositphotos.com/1338574/829/i/450/depositphotos_8292951-stock-photo-the-letter-c-in-gold.jpg" alt="Profile Picture"/>
@@ -56,8 +54,6 @@ function CategoryFeed() {
                 <img className="h-full w-full object-cover" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Profile Picture"/>
             </Link>
             </div>
-        </div>
-        </div>
         </>
     ) 
 }

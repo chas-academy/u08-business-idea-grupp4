@@ -21,7 +21,7 @@ function Navbar() {
         let userID = window.localStorage.getItem("userID");
     
         if (typeof userID !== 'undefined' && userID !== null) {
-
+          console.log("?")
         } else {
         navigate('/');
         }

@@ -4,8 +4,6 @@ function SavedFeed() {
 
     return (
         <>
-        <div className="flex justify-center pt-5">
-        <div className="grid grid-cols-3 sm:gap-3 gap-1 lg:w-7/12 w-11/12">
             <div className="bg-gray-200 sm:h-48 h-28">
                 <Link to="">
                     <img className="h-full w-full object-cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScAgbU-Xfz5sB_-u6vDUsoEuB84xhS-IHGkg&usqp=CAU" alt="Profile Picture"/>
@@ -56,8 +54,6 @@ function SavedFeed() {
                 <img className="h-full w-full object-cover" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Profile Picture"/>
             </Link>
             </div>
-        </div>
-        </div>
         </>
     ) 
 }
