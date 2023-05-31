@@ -8,7 +8,6 @@ function Navbar() {
     let profileUrl = window.localStorage.getItem("userID");
     const [cookies, , removeCookies] = useCookies(["access_token"]);
     const [profilePicture, setProfilePicture] = useState('') 
-    let userID = window.localStorage.getItem("userID");
     const [username, setUsername] = useState("");
 
     const navigate = useNavigate();
