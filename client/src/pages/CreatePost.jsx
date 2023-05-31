@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 function CreatePost() {
 
@@ -6,7 +6,7 @@ function CreatePost() {
     
    
    
-   <div className ="bg-gray-50 flex justify-center mr-50  p-50 dark:bg-gray-900">
+   <div className ="bg-gray-50 flex justify-center mt-10 mr-50  p-50 dark:bg-gray-900">
   
          
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
