@@ -18,6 +18,7 @@ import EditProfile from "./pages/editProfile.jsx";
 import CreateCategory from "./pages/CreateCategory.jsx";
 import ProfileP from "./pages/profileP.jsx";
 import Login from "./components/Login.jsx";
+import Post from "./pages/post.jsx";
 
 const router = createBrowserRouter([
   {
@@ -99,6 +100,10 @@ const router = createBrowserRouter([
       {
         path: "edit-profile/:id",
         element: <EditProfile />,
+      },
+      {
+        path: "post",
+        element: <Post />,
       }
     ],
   },
