@@ -83,7 +83,7 @@ function UserProfile() {
                             <p>following</p>
                         </div>
                     </div>
-                    <Link to={`/edit-profile/${profileUrl}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:text-lg text-xs text-center">
+                    <Link to={`/home/edit-profile/${profileUrl}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:text-lg text-xs text-center">
                     Edit profile
                     </Link>
                 </div>
@@ -124,7 +124,7 @@ function UserProfile() {
                             <p>Drinks</p>
                         </Link>
                     </div>
-                    <Link to="">
+                    <Link to={`/home/create-category`}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-8 sm:mt-1 -mt-1 mx-2 stroke-2 hover:text-blue-400" viewBox="0 0 48 48"><g fill="none" stroke="currentColor"><rect width="36" height="36" x="6" y="6" rx="3"/><path d="M24 16v16m-8-8h16"/></g></svg>
                     </Link>
                 </div>
