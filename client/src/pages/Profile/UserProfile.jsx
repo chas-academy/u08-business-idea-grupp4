@@ -3,13 +3,31 @@ import { useCookies } from "react-cookie";
 import { useNavigate, Link, Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 
+function User({ user, profile }) {
+    return (
+      <div>
+        {user ? (
+          <div>
+            <h1>Welcome, {user.name}!</h1>
+            {profile ? (
+              <p>Your profile ID is {profile.id}</p>
+            ) : (
+              <p>Loading profile...</p>
+            )}
+          </div>
+        ) : (
+          <p>Loading user...</p>
+        )}
+      </div>
+    );
+  };
+
 function UserProfile() {
         const [username, setUsername] = useState("");
         const [bio, setBio] = useState('')
         const [cookies, , ] = useCookies(["access_token"]);
         const navigate = useNavigate();
         const [profilePicture, setProfilePicture] = useState('')        
-
         
         useEffect(() => {
           const fetchUserProfile = async () => {
@@ -41,10 +59,6 @@ function UserProfile() {
         
           fetchUserProfile();
         }, [cookies.access_token, navigate]);
-        
-       
-
-    
       
         let profileUrl = window.localStorage.getItem('userID')
         
@@ -83,7 +97,7 @@ function UserProfile() {
                             <p>following</p>
                         </div>
                     </div>
-                    {/* MAKE AN IF ELSE STATEMENT FOR USER AND PROFILE */}
+                    {/* MAKE CONDITIONAL RENDERING FOR USER AND PROFILE */}
                     <Link to={`/home/edit-profile/${profileUrl}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:text-lg text-xs text-center">
                     Edit profile
                     </Link>
