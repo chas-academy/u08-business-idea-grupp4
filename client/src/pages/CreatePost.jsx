@@ -1,4 +1,4 @@
-import React {useState} from 'react'
+
 
 function CreatePost() {
 /*   const [title,setTitle] = useState("")
