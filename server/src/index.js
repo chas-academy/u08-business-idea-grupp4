@@ -13,6 +13,7 @@ const port = 3001;
 
 app.use("/auth", userRouter);
 app.use("/auth", imageRouter);
+app.use("/category", categoryRouter);
 
 mongoose
 .connect(
