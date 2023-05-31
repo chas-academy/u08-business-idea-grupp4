@@ -2,9 +2,6 @@ export default function CreateCategory() {
     return (
         <div className="relative min-h-screen flex flex-col justify-between">
             <div>
-                <div className="px-4 sm:px-6 lg:px-8">
-                    <p className="text-sm sm:text-base lg:text-lg text-gray-600">Go Back</p>
-                </div>
                 <div className="flex justify-center flex-col items-center px-4 sm:px-6 lg:px-8">
                     <div>
                         <h3 className="text-center sm:text-base lg:text-xl uppercase p-5">Add Category</h3>

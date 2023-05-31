@@ -37,15 +37,11 @@ const Register = () => {
     }
   };
 
-  const logout = () => {
-    setCookies("access_token", "");
-    window.localStorage.removeItem("userID");
-    navigate("/");
-  };
+
 
   return (
     <div>
-      <section className="bg-gray-50">
+      
 
         <div className="flex flex-col items-center justify-center px-8 py-10 mx-auto md:h-screen lg:py-0">
           <div className="w-full bg-white rounded-lg shadow-xl dark:border md:mt-0 sm:max-w-md xl:p-0">
@@ -102,7 +98,7 @@ const Register = () => {
             </div>
           </div>
         </div>
-      </section>
+      
     </div>
   );
 };
