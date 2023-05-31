@@ -6,12 +6,12 @@ import { useState, useEffect } from "react";
 function UserProfile() {
         const [username, setUsername] = useState("");
         const [bio, setBio] = useState('')
-        const [cookies, , removeCookies] = useCookies(["access_token"]);
+        const [cookies, , ] = useCookies(["access_token"]);
         const navigate = useNavigate();
    
         const userID = window.localStorage.getItem('userID');
         if (typeof userID !== 'undefined' && userID !== null) {
-
+            console.log("?");
         } else {
         navigate('/');
         }
