@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useNavigate, Link } from "react-router-dom";

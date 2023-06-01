@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [setCookies] = useCookies(["access_token"]);
+  const [, setCookies] = useCookies(["access_token"]);
   const navigate = useNavigate();
 
   const Notify = () => {
