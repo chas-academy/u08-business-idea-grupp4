@@ -6,7 +6,7 @@ import { ImageModel } from "../models/ImageSchema.js";
 const router = express.Router();
 
 const storage = multer.diskStorage({
-  destination: "/uploads",
+  destination: "./uploads",
   filename: (req, file, callback) => {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
     const extension = file.originalname.split(".").pop();

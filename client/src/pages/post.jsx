@@ -1,7 +1,6 @@
-import React from 'react'
 
 
-function post() {
+function Post() {
   return (
     <div>
     <div className=' max-w-6xl	max-h-5x1 w-full  shadow-md  rounded-sm	m-10	bg-white'>
@@ -180,4 +179,4 @@ function post() {
 )
 }
 
-export default post
+export default Post;
