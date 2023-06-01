@@ -19,9 +19,6 @@ app.use("/auth", imageRouter);
 
 const dbConnectionString = process.env.DB_CONNECTION_STRING;
 
-console.log(dbConnectionString);
-console.log("hello");
-
 mongoose
   .connect(dbConnectionString)
   .then(() => {
