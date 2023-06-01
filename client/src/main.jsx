@@ -17,6 +17,8 @@ import Terms from "./pages/Terms.jsx";
 import EditProfile from "./pages/editProfile.jsx";
 import CreateCategory from "./pages/CreateCategory.jsx";
 import ProfileP from "./pages/profileP.jsx";
+import Login from "./components/Login.jsx";
+import Post from "./pages/post.jsx";
 
 const router = createBrowserRouter([
   {
@@ -56,8 +58,8 @@ const router = createBrowserRouter([
         element: <Terms />,
       },
       {
-        path: "edit-profile/:id",
-        element: <EditProfile />,
+        path: "login",
+        element: <Login />,
       },
     ],
   },
@@ -76,7 +78,7 @@ const router = createBrowserRouter([
         element: <Feed />,
       },
       {
-        path: "profile/:id",
+        path: "user/:id",
         element: <UserProfile />,
       },
       {
@@ -94,6 +96,14 @@ const router = createBrowserRouter([
       {
         path: "ProfileP",
         element: <ProfileP />,
+      },
+      {
+        path: "edit-profile/:id",
+        element: <EditProfile />,
+      },
+      {
+        path: "post",
+        element: <Post />,
       },
     ],
   },
