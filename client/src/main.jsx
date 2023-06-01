@@ -16,7 +16,7 @@ import Privacy from "./pages/Privacy.jsx";
 import Terms from "./pages/Terms.jsx";
 import EditProfile from "./pages/editProfile.jsx";
 import CreateCategory from "./pages/CreateCategory.jsx";
-import ProfileP from "./pages/profileP.jsx";
+import ProfileP from "./pages/ProfileP.jsx";
 import Login from "./components/Login.jsx";
 import Post from "./pages/post.jsx";
 
