@@ -4,9 +4,15 @@ import cors from "cors";
 import mongoose from "mongoose";
 import { userRouter } from "./routes/users.js";
 import { imageRouter } from "./routes/images.js";
+// import { readAll, read } from "./routes/userRead.js";
 
 const app = express();
+
+// parse json objects
 app.use(express.json());
+// parse url encoded objects- data sent throught the url
+app.use(express.urlencoded({ extended: true}));
+// cors är bra så att vi kan ha server och client isär
 app.use(cors());
 
 const port = 3001;
