@@ -28,7 +28,6 @@ https://www.figma.com/file/SlP2zQ2x16dF54yWSjMw6e/U08?node-id=0%3A1&t=sltY8wcMJ5
 
 - Amilia Waloh
 - Bakr Haider Al-Blam
-- Christopher Rydell
 - Joselyn Moreta
 - Ludvig Flyckt
 - Hafiz Samaae
