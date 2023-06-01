@@ -2,21 +2,20 @@ import React, { useRef } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useNavigate, Link } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const [cookies, setCookies] = useCookies(["access_token"]);
   const navigate = useNavigate();
 
-  const emailRef = useRef()
-  const usernameRef = useRef()
-  const passwordRef = useRef()
+  const emailRef = useRef();
+  const usernameRef = useRef();
+  const passwordRef = useRef();
 
   const Notify = () => {
-    toast('Registered Successfully!');
-  }
+    toast("Registered Successfully!");
+  };
 
   const onRegister = async (event) => {
     event.preventDefault();
@@ -27,9 +26,9 @@ const Register = () => {
         password: passwordRef.current.value,
       });
       Notify();
-      emailRef.current.value = ''
-      usernameRef.current.value = ''
-      passwordRef.current.value = ''
+      emailRef.current.value = "";
+      usernameRef.current.value = "";
+      passwordRef.current.value = "";
     } catch (error) {
       console.log(error);
     }
@@ -44,7 +43,6 @@ const Register = () => {
   return (
     <div>
       <section className="bg-gray-50">
-
         <div className="flex flex-col items-center justify-center px-8 py-10 mx-auto md:h-screen lg:py-0">
           <div className="w-full bg-white rounded-lg shadow-xl dark:border md:mt-0 sm:max-w-md xl:p-0">
             <div className="p-9 space-y-4 md:space-y-6 sm:p-8">
@@ -91,7 +89,10 @@ const Register = () => {
                 </button>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Already have an account? <br />
-                  <Link to={"/login"} className="font-medium text-primary-600 hover:underline dark:text-primary-500">
+                  <Link
+                    to={"/login"}
+                    className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                  >
                     Login here
                   </Link>
                 </p>
