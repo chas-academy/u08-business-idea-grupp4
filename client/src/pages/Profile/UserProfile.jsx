@@ -3,25 +3,6 @@ import { useCookies } from "react-cookie";
 import { useNavigate, Link, Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-function User({ user, profile }) {
-    return (
-      <div>
-        {user ? (
-          <div>
-            <h1>Welcome, {user.name}!</h1>
-            {profile ? (
-              <p>Your profile ID is {profile.id}</p>
-            ) : (
-              <p>Loading profile...</p>
-            )}
-          </div>
-        ) : (
-          <p>Loading user...</p>
-        )}
-      </div>
-    );
-  };
-
 function UserProfile() {
         const [username, setUsername] = useState("");
         const [bio, setBio] = useState('')
