@@ -1,7 +1,7 @@
 const Info = () => {
   return (
     <div className="flex flex-row items-center justify-end w-3/4 m-20">
-      <img src="../public/images/info.png" alt="Info" className="" />
+      <img src="../images/info.png" alt="Info" className="" />
     </div>
   );
 };

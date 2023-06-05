@@ -43,10 +43,11 @@ router.post("/profile-image", upload.single("avatar"), async (req, res) => {
   }
 });
 
-// Upload multiple recipe pictures
+// Upload recipe pictures (single or multiple)
 router.post("/recipe-images", upload.array("recipe", 10), async (req, res) => {
   try {
     const files = req.files;
+
     const imagePromises = files.map(async (file) => {
       const name = file.originalname;
       const filename = file.path;
