@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import UserProfile from "./pages/userProfile.jsx";
+import UserProfile from "./pages/UserProfile.jsx";
 import Navbar from "./components/Navbar.jsx";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
@@ -14,6 +14,11 @@ import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import Privacy from "./pages/Privacy.jsx";
 import Terms from "./pages/Terms.jsx";
+import EditProfile from "./pages/editProfile.jsx";
+import CreateCategory from "./pages/CreateCategory.jsx";
+import ProfileP from "./pages/profileP.jsx";
+import Login from "./components/Login.jsx";
+import Post from "./pages/post.jsx";
 
 const router = createBrowserRouter([
   {
@@ -52,13 +57,17 @@ const router = createBrowserRouter([
         path: "/terms",
         element: <Terms />,
       },
+      {
+        path: "login",
+        element: <Login />,
+      },
     ],
   },
   {
     path: "home",
     element: (
       <>
-        <div className="flex flex-row">
+        <div className="xl:flex xl:flex-row">
           <Navbar />
         </div>
       </>
@@ -69,7 +78,7 @@ const router = createBrowserRouter([
         element: <Feed />,
       },
       {
-        path: ":userId",
+        path: "user/:id",
         element: <UserProfile />,
       },
       {
@@ -79,6 +88,22 @@ const router = createBrowserRouter([
       {
         path: "create-post",
         element: <CreatePost />,
+      },
+      {
+        path: "create-category",
+        element: <CreateCategory />,
+      },
+      {
+        path: "ProfileP",
+        element: <ProfileP />,
+      },
+      {
+        path: "edit-profile/:id",
+        element: <EditProfile />,
+      },
+      {
+        path: "post",
+        element: <Post />,
       },
     ],
   },
