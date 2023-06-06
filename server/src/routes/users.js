@@ -55,7 +55,7 @@ router.get('/profile/:id', authenticateToken, async  (req, res) => {
   }
 });
 
-router.get('/profile/:username', authenticateToken, async (req, res) => {
+router.get('/profile/user/:username', authenticateToken, async (req, res) => {
   try {
     const username = req.params.username;
     const user = await UserModel.findOne({ username });
