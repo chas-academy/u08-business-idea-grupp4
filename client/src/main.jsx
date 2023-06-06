@@ -15,6 +15,9 @@ import Contact from "./pages/Contact.jsx";
 import Privacy from "./pages/Privacy.jsx";
 import Terms from "./pages/Terms.jsx";
 import EditProfile from "./pages/editProfile.jsx";
+import Post from "./pages/Post.jsx";
+import Chat from "./pages/Chat.jsx";
+
 
 const router = createBrowserRouter([
   {
@@ -84,7 +87,16 @@ const router = createBrowserRouter([
       {
         path: "create-post",
         element: <CreatePost />,
+      },
+      {
+        path: "post",
+        element: <Post />,
+      },
+      {
+        path: "chat",
+        element: <Chat />,
       }
+
     ],
   },
 ]);
