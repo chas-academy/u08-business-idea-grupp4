@@ -55,6 +55,36 @@ router.get('/profile/:id', authenticateToken, async  (req, res) => {
   }
 });
 
+router.get('/profile/:username', authenticateToken, async (req, res) => {
+  try {
+    const username = req.params.username;
+    const user = await UserModel.findOne({ username });
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.json({ user });
+  } catch (error) {
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+router.get('/profiles', authenticateToken, async (req, res) => {
+  try {
+    const users = await UserModel.find({}, '_id username');
+    const userProfile = users.map((user) => {
+      return {
+        _id: user._id,
+        username: user.username
+      };
+    });
+    res.json({ userProfile });
+  } catch (error) {
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
+
 router.put('/profile/:id', authenticateToken, async (req, res) => {
   try {
     const userId = req.user.id; 
