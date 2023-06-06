@@ -93,7 +93,6 @@ const Login = () => {
               >
                 Login
               </button>
-              {<p className='p-3 text-black'>{Notify}</p>} 
                     <ToastContainer />
             </form>
           </div>
