@@ -19,6 +19,7 @@ import Chat from "./components/Chat.jsx";
 import CategoryFeed from "./components/ProfileFeed/CategoryFeed.jsx";
 import PostFeed from "./components/ProfileFeed/PostFeed.jsx";
 import SavedFeed from "./components/ProfileFeed/SavedFeed.jsx";
+import CreateCategory from "./pages/CreateCategory.jsx";
 
 const router = createBrowserRouter([
   {
@@ -98,6 +99,10 @@ const router = createBrowserRouter([
       {
         path: "create-post",
         element: <CreatePost />,
+      },
+      {
+        path: "create-category",
+        element: <CreateCategory />,
       },
       {
         path: "post/:id",

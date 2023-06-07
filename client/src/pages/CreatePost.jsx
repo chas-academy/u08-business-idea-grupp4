@@ -1,9 +1,26 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function CreatePost() {
+  const userId = localStorage.getItem("userID");
+
+  const [categories, setCategories] = useState([]);
+  const [category, setCategory] = useState(null);
+
+  const getCategories = async () => {
+    const userId = localStorage.getItem("userID");
+    const res = await axios.get(`http://localhost:3001/category/categories/${userId}`);
+    setCategories(res.data);
+  };
+
+  useEffect(() => {
+    getCategories();
+  }, [])
+  
+
+
   const [description, setDescription] = useState("");
   const [duration, setDuration] = useState(0);
   const [files, setFiles] = useState([]);
@@ -15,7 +32,7 @@ function CreatePost() {
   const [instructions, setInstructions] = useState([
     { step: 1, description: "" },
   ]);
-  const userId = localStorage.getItem("userID");
+  
 
   const Notify = () => {
     toast("Post created!");
@@ -277,6 +294,16 @@ function CreatePost() {
               onChange={handleDurationChange}
             />
             <span className="text-white">min</span>
+          </div>
+          <div>
+            <select
+              name="category"
+              placeholder="Select a category"
+              id="category"
+              className="bg-gray-50 border border-black text-gray-900 sm:text-sm rounded-full  block w-full p-2.5 dark:bg-white-700 "
+              >
+                <option>Test</option>
+              </select>
           </div>
           <button
             className=" bg-blue-600 border border-black text-white sm:text-sm rounded-full focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600   dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

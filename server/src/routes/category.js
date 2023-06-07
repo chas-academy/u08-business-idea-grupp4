@@ -17,7 +17,9 @@ router.post("/addCategory", async (req, res) => {
 
 router.get('/categories/:userId', async (req,res) => {
     try {
-        const categories = await CategoryListModel.find({ user: req.params.userId })
+        console.log(req.params.userId)
+        const categories = await CategoryListModel.find();
+        console.log(categories)
         res.json(categories)
     } catch (error) {
         res.json(error)
