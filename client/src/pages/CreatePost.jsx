@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
 
 function CreatePost() {
   const [description, setDescription] = useState("");
   const [duration, setDuration] = useState(0);
-  /* const [files, setFiles] = useState([]); */
-  /* const [imagePreviews, setImagePreviews] = useState([]); */
-  /* const inputRef = useRef(null); */
+  const [files, setFiles] = useState([]);
+  const [imagePreviews, setImagePreviews] = useState([]);
+  const inputRef = useRef(null);
   const [ingredients, setIngredients] = useState([
     { name: "", quantity: "", unit: "" },
   ]);
@@ -15,14 +15,14 @@ function CreatePost() {
   ]);
   const userId = localStorage.getItem("userID");
 
-  /*   // Handles the images
+  // Handles the images
   const handleFileChange = () => {
     const selectedFiles = Array.from(inputRef.current.files);
     setFiles(selectedFiles);
 
     const previews = selectedFiles.map((file) => URL.createObjectURL(file));
     setImagePreviews(previews);
-  }; */
+  };
 
   // Handles the ingredients
   const handleIngredientChange = (index, field, value) => {
@@ -74,8 +74,28 @@ function CreatePost() {
         `http://localhost:3001/api/username/${userId}`
       );
       const { username } = response.data;
+
+      const formData = new FormData();
+      files.forEach((file) => {
+        formData.append("recipe", file);
+      });
+
+      const uploadResponse = await axios.post(
+        "http://localhost:3001/post/image",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      // Get the image IDs
+      const imageIds = uploadResponse.data.imageIds;
+
       await axios.post("http://localhost:3001/post/create-post", {
         author: username,
+        pictures: imageIds,
         description,
         ingredients,
         duration,
@@ -84,7 +104,6 @@ function CreatePost() {
       });
 
       console.log("Created post successfully");
-      console.log("Username:", username);
     } catch (error) {
       console.error("Failed to create post:", error);
     }
@@ -94,7 +113,7 @@ function CreatePost() {
     <div className="bg-gray-50 flex justify-center mt-10 mr-50  p-50 dark:bg-gray-900">
       <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-          {/* <div className="flex flex-row overflow-x-auto justify-start">
+          <div className="flex flex-row overflow-x-auto justify-start">
             {imagePreviews.map((preview, index) => (
               <div key={index} className="flex-shrink-0 w-40 h-40 mx-2">
                 <img
@@ -141,7 +160,7 @@ function CreatePost() {
                 SVG, PNG, JPG or GIF (MAX. 800x400px)
               </p>
             </div>
-          </label> */}
+          </label>
           <input
             type="text"
             placeholder="Description"

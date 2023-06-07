@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const PostSchema = new mongoose.Schema({
   author: { type: String, required: false },
-  /* pictures: [{ type: mongoose.Schema.Types.ObjectId, ref: "Image" }], */
+  pictures: [{ type: mongoose.Schema.Types.ObjectId, ref: "Image" }],
   description: { type: String, required: false },
   ingredients: [
     {
@@ -23,8 +23,8 @@ const PostSchema = new mongoose.Schema({
       _id: false,
     },
   ],
-  /* reviewScore: { type: Number, required: false },
-  likes: { type: Number, required: false }, */
+  reviewScore: { type: Number, default: 0, required: false },
+  likes: { type: Number, default: 0, required: false },
   createdAt: { type: Date, required: false },
   user: {
     type: mongoose.Schema.Types.ObjectId,

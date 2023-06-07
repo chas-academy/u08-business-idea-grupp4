@@ -6,6 +6,7 @@ import multer from "multer";
 import { userRouter } from "./routes/users.js";
 import { postRouter } from "./routes/posts.js";
 import { categoryRouter } from "./routes/category.js";
+import { imageRouter } from "./routes/images.js";
 
 const app = express();
 app.use(express.json());
@@ -17,6 +18,7 @@ const upload = multer({ dest: "uploads/" });
 
 app.use("/auth", userRouter);
 app.use("/api", userRouter);
+app.use("/post", imageRouter);
 app.use("/post", postRouter);
 app.use("/category", categoryRouter);
 
