@@ -2,18 +2,18 @@ import { useState } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [_, setCookies] = useCookies(["access_token"]);
+  const [ , setCookies] = useCookies(["access_token"]);
   const navigate = useNavigate();
 
   const Notify = () => {
-    toast('Wrong email or password.')
-}
+    toast("Wrong email or password.");
+  };
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -27,24 +27,28 @@ const Login = () => {
         window.localStorage.setItem("userID", response.data.userID);
 
         const userID = window.localStorage.getItem('userID');
+        const username = response.data.user.username;
+
+        // Store the username in window.localStorage
+        window.localStorage.setItem("username", username);
+        console.log("username " + response.data.username);
+
         if (userID !== 'undefined') {
           navigate('/home');
           
         } else {
-          navigate('/');
-          Notify()
+          navigate("/");
+          Notify();
         }
       } else {
         console.log("Login failed");
-        navigate('/');
-        
+        navigate("/");
       }
     } catch (error) {
       console.log(error);
-      navigate('/');
+      navigate("/");
     }
   };
-  
   
 
   return (
@@ -93,7 +97,6 @@ const Login = () => {
               >
                 Login
               </button>
-              {<p className='p-3 text-black'>{Notify}</p>} 
                     <ToastContainer />
             </form>
           </div>

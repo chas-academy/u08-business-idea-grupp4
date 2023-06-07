@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
-
+import { useState } from "react";
 
 const Search = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filter, setFilter] = useState('all');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filter, setFilter] = useState("all");
 
   const foodItems = [
-    { name: 'Burger', category: 'food' },
-    { name: 'Pizza', category: 'food' },
-    { name: 'Pasta', category: 'food' },
-    { name: 'Cheesecake', category: 'cake' },
-    { name: 'Chocolate cake', category: 'cake' },
-    { name: 'Coffee', category: 'drink' },
-    { name: 'Tea', category: 'drink' },
-    { name: 'Cola', category: 'drink' },
+    { name: "Burger", category: "food" },
+    { name: "Pizza", category: "food" },
+    { name: "Pasta", category: "food" },
+    { name: "Cheesecake", category: "cake" },
+    { name: "Chocolate cake", category: "cake" },
+    { name: "Coffee", category: "drink" },
+    { name: "Tea", category: "drink" },
+    { name: "Cola", category: "drink" },
   ];
 
   const handleSearch = (e) => {
@@ -25,7 +24,7 @@ const Search = () => {
   };
 
   const filteredItems = foodItems.filter((item) => {
-    if (filter === 'all') {
+    if (filter === "all") {
       return item.name.toLowerCase().includes(searchTerm.toLowerCase());
     } else {
       return (
@@ -46,33 +45,41 @@ const Search = () => {
       <div className="flex gap-2 mb-4">
         <button
           className={`py-2 px-4 rounded-md ${
-            filter === 'all' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
+            filter === "all"
+              ? "bg-blue-500 text-white"
+              : "bg-gray-200 text-gray-700"
           }`}
-          onClick={() => handleFilter('all')}
+          onClick={() => handleFilter("all")}
         >
           All
         </button>
         <button
           className={`py-2 px-4 rounded-md ${
-            filter === 'food' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
+            filter === "food"
+              ? "bg-blue-500 text-white"
+              : "bg-gray-200 text-gray-700"
           }`}
-          onClick={() => handleFilter('food')}
+          onClick={() => handleFilter("food")}
         >
           Food
         </button>
         <button
           className={`py-2 px-4 rounded-md ${
-            filter === 'cake' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
+            filter === "cake"
+              ? "bg-blue-500 text-white"
+              : "bg-gray-200 text-gray-700"
           }`}
-          onClick={() => handleFilter('cake')}
+          onClick={() => handleFilter("cake")}
         >
           Cakes
         </button>
         <button
           className={`py-2 px-4 rounded-md ${
-            filter === 'drink' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
+            filter === "drink"
+              ? "bg-blue-500 text-white"
+              : "bg-gray-200 text-gray-700"
           }`}
-          onClick={() => handleFilter('drink')}
+          onClick={() => handleFilter("drink")}
         >
           Drinks
         </button>
