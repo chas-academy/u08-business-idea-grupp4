@@ -15,6 +15,7 @@ import Contact from "./pages/Contact.jsx";
 import Privacy from "./pages/Privacy.jsx";
 import Terms from "./pages/Terms.jsx";
 import Post from "./pages/Post.jsx";
+import EditProfile from "./pages/editProfile.jsx";
 import Chat from "./components/Chat.jsx";
 import CategoryFeed from "./components/ProfileFeed/CategoryFeed.jsx";
 import PostFeed from "./components/ProfileFeed/PostFeed.jsx";
@@ -100,7 +101,11 @@ const router = createBrowserRouter([
         element: <CreatePost />,
       },
       {
-        path: "post/:id",
+        path: "edit-profile/:id",
+        element: <EditProfile />,
+      },
+      {
+        path: "profile/:username/post/:id",
         element: <Post />,
       },
       {

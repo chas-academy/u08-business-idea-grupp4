@@ -253,7 +253,7 @@ function Navbar() {
             <p>Create post</p>
           </Link>
           <Link
-            to={`user/${profileUrl}`}
+            to={`profile/${profileUrl}`}
             className="flex flex-col items-center text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline"
           >
             <span className="text-gray-600">

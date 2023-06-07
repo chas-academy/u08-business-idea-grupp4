@@ -28,7 +28,12 @@ router.post("/login", async (req, res) => {
     return res.json({ message: "Email or password is incorrect" });
   }
   const token = jwt.sign({ id: user._id }, "secret");
-  return res.json({ token, userID: user._id, username: user.username, user: { id: user._id, email: user.email, username: user.username } });
+  return res.json({
+    token,
+    userID: user._id,
+    username: user.username,
+    user: { id: user._id, email: user.email, username: user.username },
+  });
 });
 
 function authenticateToken(req, res, next) {
@@ -42,7 +47,7 @@ function authenticateToken(req, res, next) {
   });
 }
 
-router.get('/user/:id', authenticateToken, async  (req, res) => {
+router.get("/user/:id", authenticateToken, async (req, res) => {
   try {
     const userId = req.params.id;
     const user = await UserModel.findById(userId);
@@ -55,43 +60,45 @@ router.get('/user/:id', authenticateToken, async  (req, res) => {
   }
 });
 
-router.get('/profile/:username', authenticateToken, async (req, res) => {
+router.get("/profile/:username", authenticateToken, async (req, res) => {
   try {
     const username = req.params.username;
     const user = await UserModel.findOne({ username });
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: "User not found" });
     }
     res.json({ user });
   } catch (error) {
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: "Internal server error" });
   }
 });
 
-router.get('/profiles', authenticateToken, async (req, res) => {
+router.get("/profiles", authenticateToken, async (req, res) => {
   try {
-    const users = await UserModel.find({}, '_id email username');
+    const users = await UserModel.find({}, "_id email username");
     const userProfile = users.map((user) => {
       return {
         _id: user._id,
         email: user.email,
-        username: user.username
+        username: user.username,
       };
     });
     res.json({ userProfile });
   } catch (error) {
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: "Internal server error" });
   }
 });
 
-
-
-router.put('/profile/:id', authenticateToken, async (req, res) => {
+// Update user
+router.put("/profile/:id", authenticateToken, async (req, res) => {
+  console.log("Middleware executed successfully");
   try {
     const userId = req.user.id;
+    console.log(userId);
     const { bio, username, password, profilePicture } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await UserModel.findById(userId);
+    console.log(user);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
