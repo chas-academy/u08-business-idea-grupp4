@@ -44,7 +44,6 @@ function UserProfile() {
     fetchUserProfile();
     }, [cookies.access_token, navigate, routeUsername]);
 
-    let profileUrl = window.localStorage.getItem('userID');
     let storedUsername = window.localStorage.getItem('username');
 
     return (
@@ -83,7 +82,7 @@ function UserProfile() {
                     </div>
                     {/* CONDITIONAL RENDERING FOR USER */}
                     {username === storedUsername && (
-                    <Link to={`/home/edit-profile/${profileUrl}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:text-lg text-xs text-center">
+                    <Link to={`/home/edit-profile/${storedUsername}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:text-lg text-xs text-center">
                     Edit profile
                     </Link>
                         )}
