@@ -24,4 +24,20 @@ router.get('/categories/:userId', async (req,res) => {
     }
 })
 
+// router.get('/category/:title', async (req, res) => {
+//     try {
+//         const category = await CategoryListModel.findOne({ user: req.params.userId });
+//         if (category) {
+//             const categoryTitle = category.title;
+//             res.json(categoryTitle);
+//         } else {
+//             res.json({ message: "Category not found" });
+//         }
+//     } catch (error) {
+//         res.json(error);
+//     }
+// });
+
+
+
 export { router as categoryRouter };

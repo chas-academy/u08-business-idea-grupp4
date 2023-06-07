@@ -120,7 +120,7 @@ function UserProfile() {
                     <div className="flex flex-row sm:space-x-5 space-x-2 pb-2 sm:text-lg text-xs overflow-x-scroll">
                     {categories.map((category, index) => (
                     <div key={index}>
-                         <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-1 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
+                         <Link to="category" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-1 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
                             <p>{category.title}</p>
                         </Link>
 
