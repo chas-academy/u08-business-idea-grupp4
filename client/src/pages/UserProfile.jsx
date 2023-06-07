@@ -8,7 +8,8 @@ function UserProfile() {
         const [bio, setBio] = useState('')
         const [cookies, , removeCookies] = useCookies(["access_token"]);
         const navigate = useNavigate();
-        const [profilePicture, setProfilePicture] = useState('')        
+        const [profilePicture, setProfilePicture] = useState('')
+        const [categories, setCategories] = useState([]);
 
         
         useEffect(() => {
@@ -28,7 +29,7 @@ function UserProfile() {
                 },
               });
         
-              console.log(response.data);
+              
               if (response.data && response.data.user) {
                 setUsername(response.data.user.username);
                 setBio(response.data.user?.bio)
@@ -42,12 +43,25 @@ function UserProfile() {
           fetchUserProfile();
         }, [cookies.access_token, navigate]);
         
-       
-
-    
       
         let profileUrl = window.localStorage.getItem('userID')
         
+        useEffect(() => {
+            const fetchData = async () => {
+              try {
+                const userID = window.localStorage.getItem("userID");
+                const response = await axios.get(`http://localhost:3001/category/categories/${userID}`);
+                console.log(response.data);
+                setCategories(response.data);
+              } catch (error) {
+                console.log(error);
+              }
+            };
+        
+            fetchData();
+          }, []);
+        
+          
 
     return (
         <>
@@ -102,27 +116,14 @@ function UserProfile() {
 
                 <div className="flex flex-row">
                     <div className="flex flex-row sm:space-x-5 space-x-2 pb-2 sm:text-lg text-xs overflow-x-scroll">
-                        <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-1 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
-                            <p>Cake</p>
+                    {categories.map((category, index) => (
+                    <div key={index}>
+                         <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-1 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
+                            <p>{category.title}</p>
                         </Link>
-                        <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-1 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
-                            <p>Pasta</p>
-                        </Link>
-                        <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-1 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
-                            <p>Drinks</p>
-                        </Link>
-                        <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-1 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
-                            <p>Drinks</p>
-                        </Link>
-                        <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-1 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
-                            <p>Drinks</p>
-                        </Link>
-                        <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-1 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
-                            <p>Drinks</p>
-                        </Link>
-                        <Link to="" className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-1 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline">
-                            <p>Drinks</p>
-                        </Link>
+                        
+                    </div>
+                    ))}      
                     </div>
                     <Link to={`/home/create-category`}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-8 sm:mt-1 -mt-1 mx-2 stroke-2 hover:text-blue-400" viewBox="0 0 48 48"><g fill="none" stroke="currentColor"><rect width="36" height="36" x="6" y="6" rx="3"/><path d="M24 16v16m-8-8h16"/></g></svg>

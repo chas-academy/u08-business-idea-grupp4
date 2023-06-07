@@ -31,6 +31,7 @@ const EditProfile = () => {
       setUsername('');
       setBio('');
       setPassword('');
+      window.location.reload()
 
     })
     .catch((error) => {
