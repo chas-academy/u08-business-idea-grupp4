@@ -42,7 +42,7 @@ function UserProfile() {
     };
 
     fetchUserProfile();
-    }, [cookies.access_token, navigate, routeUsername]);
+    }, [cookies.access_token, navigate, routeUsername, username, bio]);
 
     let storedUsername = window.localStorage.getItem('username');
 
