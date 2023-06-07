@@ -15,7 +15,7 @@ import Contact from "./pages/Contact.jsx";
 import Privacy from "./pages/Privacy.jsx";
 import Terms from "./pages/Terms.jsx";
 import Post from "./pages/Post.jsx";
-import Chat from "./pages/Chat.jsx";
+import Chat from "./components/Chat.jsx";
 
 const router = createBrowserRouter([
   {
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "home",
+    path: "/home",
     element: (
       <>
         <div className="xl:flex xl:flex-row">
@@ -83,7 +83,7 @@ const router = createBrowserRouter([
         element: <CreatePost />,
       },
       {
-        path: "post",
+        path: "post/:id",
         element: <Post />,
       },
       {

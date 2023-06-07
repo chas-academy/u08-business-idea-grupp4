@@ -1,6 +1,6 @@
 import { useState } from "react";
-import CommentList from "./CommentList";
-import Chat from "./Chat";
+import CommentList from "../components/CommentList";
+import Chat from "../components/Chat";
 
 const Post = () => {
   const [comments, setComments] = useState([]);

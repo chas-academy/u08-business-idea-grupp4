@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from "react";
+import PropTypes from "prop-types";
 
 const Comment = ({ comment, updateComment, deleteComment }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -11,7 +12,7 @@ const Comment = ({ comment, updateComment, deleteComment }) => {
   const handleUpdate = () => {
     const updatedCommentObj = {
       id: comment.id,
-      content: updatedComment
+      content: updatedComment,
     };
     updateComment(updatedCommentObj);
     setIsEditing(false);
@@ -40,6 +41,15 @@ const Comment = ({ comment, updateComment, deleteComment }) => {
       )}
     </div>
   );
+};
+
+Comment.propTypes = {
+  comment: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    content: PropTypes.string.isRequired,
+  }).isRequired,
+  updateComment: PropTypes.func.isRequired,
+  deleteComment: PropTypes.func.isRequired,
 };
 
 export default Comment;

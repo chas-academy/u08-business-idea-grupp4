@@ -1,5 +1,5 @@
-import React from 'react';
-import Comment from './Comment';
+import Comment from "./Comment";
+import PropTypes from "prop-types";
 
 const CommentList = ({ comments, updateComment, deleteComment }) => {
   return (
@@ -15,6 +15,16 @@ const CommentList = ({ comments, updateComment, deleteComment }) => {
       ))}
     </div>
   );
+};
+CommentList.propTypes = {
+  comments: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      content: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  updateComment: PropTypes.func.isRequired,
+  deleteComment: PropTypes.func.isRequired,
 };
 
 export default CommentList;
