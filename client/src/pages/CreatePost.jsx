@@ -116,8 +116,8 @@ function CreatePost() {
   };
 
   return (
-    <div className="bg-gray-50 flex justify-center mt-10 mr-50  p-50 dark:bg-gray-900">
-      <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+    <div className="flex justify-center mt-10 mr-50  p-50">
+      <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:border-gray-700">
         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
           <div className="flex flex-row overflow-x-auto justify-start">
             {imagePreviews.map((preview, index) => (
@@ -132,7 +132,7 @@ function CreatePost() {
           </div>
           <label
             htmlFor="dropzone-file"
-            className="flex flex-col items-center justify-center w-full h-24 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+            className="flex flex-col items-center justify-center w-full h-72 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-200 dark:bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
           >
             <input
               id="dropzone-file"
@@ -172,14 +172,14 @@ function CreatePost() {
             placeholder="Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="bg-gray-50 border border-black text-gray-900 sm:text-sm rounded-full  block w-full p-2.5 dark:bg-white-700 "
+            className="bg-gray-50 border-2 border-gray-900 text-gray-900 sm:text-sm rounded-3xl block w-full p-2.5"
           />
           {ingredients.map((ingredient, index) => (
             <div className="flex items-center space-x-2" key={index}>
               <input
                 type="text"
                 placeholder="Ingredient"
-                className="bg-gray-50 border border-black text-gray-900 sm:text-sm rounded-full block w-1/2 p-2.5 dark:bg-white-700"
+                className="bg-gray-50 border-2 border-gray-900 text-gray-900 sm:text-sm rounded-3xl block w-full p-2.5"
                 value={ingredient.name}
                 onChange={(e) =>
                   handleIngredientChange(index, "name", e.target.value)
@@ -188,7 +188,7 @@ function CreatePost() {
               <input
                 type="text"
                 placeholder="Quantity"
-                className="bg-gray-50 border border-black text-gray-900 sm:text-sm rounded-full block w-1/4 p-2.5 dark:bg-white-700"
+                className="border-2 border-gray-900 text-gray-900 sm:text-sm rounded-3xl block w-1/4 p-2.5 dark:bg-white-700"
                 value={ingredient.quantity}
                 onChange={(e) =>
                   handleIngredientChange(index, "quantity", e.target.value)
@@ -197,7 +197,7 @@ function CreatePost() {
               <input
                 type="text"
                 placeholder="Unit"
-                className="bg-gray-50 border border-black text-gray-900 sm:text-sm rounded-full block w-1/4 p-2.5 dark:bg-white-700"
+                className="border-2 border-gray-900 text-gray-900 sm:text-sm rounded-3xl block w-1/4 p-2.5 dark:bg-white-700"
                 value={ingredient.unit}
                 onChange={(e) =>
                   handleIngredientChange(index, "unit", e.target.value)
@@ -225,11 +225,11 @@ function CreatePost() {
           ))}
           {instructions.map((instruction, index) => (
             <div className="flex items-center space-x-2" key={index}>
-              <span className="text-white">{instruction.step}. </span>
+              <span className="text-black">{instruction.step}. </span>
               <input
                 type="text"
                 placeholder="Instruction"
-                className="bg-gray-50 border border-black text-gray-900 sm:text-sm rounded-full block w-full p-2.5 dark:bg-white-700"
+                className="bg-gray-50 border-2 border-gray-900 text-gray-900 sm:text-sm rounded-3xl block w-full p-2.5"
                 value={instruction.description}
                 onChange={(e) =>
                   handleInstructionChange(index, "description", e.target.value)
@@ -261,25 +261,25 @@ function CreatePost() {
               min="0"
               name="hours"
               placeholder="Hours"
-              className="bg-gray-50 border border-black text-gray-900 sm:text-sm rounded-full block w-24 p-2.5 dark:bg-white-700 text-center"
+              className="border-2 border-gray-900 text-gray-900 sm:text-sm rounded-3xl block w-24 p-2.5 dark:bg-white-700 text-center"
               value={duration.hours}
               onChange={handleDurationChange}
             />
-            <span className="text-white">h</span>
+            <span className="text-black">h</span>
             <input
               type="number"
               min="0"
               max="59"
               name="minutes"
               placeholder="Minutes"
-              className="bg-gray-50 border border-black text-gray-900 sm:text-sm rounded-full block w-24 p-2.5 dark:bg-white-700 text-center"
+              className="border-2 border-gray-900 text-gray-900 sm:text-sm rounded-3xl block w-24 p-2.5 dark:bg-white-700 text-center"
               value={duration.minutes}
               onChange={handleDurationChange}
             />
-            <span className="text-white">min</span>
+            <span className="text-black">min</span>
           </div>
           <button
-            className=" bg-blue-600 border border-black text-white sm:text-sm rounded-full focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600   dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="w-full focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-3xl text-sm px-5 py-2.5 text-center bg-black text-white"
             onClick={handleSubmit}
           >
             POST
