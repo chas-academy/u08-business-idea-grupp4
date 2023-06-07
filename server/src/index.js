@@ -28,7 +28,7 @@ app.use("/post", postRouter);
 app.use("/category", categoryRouter);
 
 mongoose
-  .connect("mongodb://localhost:27017/")
+  .connect("mongodb://localhost:27017/" && "mongodb+srv://bakerhaider:hmshood@cluster0.ts1n8aq.mongodb.net/Cluster0?retryWrites=true&w=majority")
   .then(() => {
     console.log("Connected to MongoDB");
   })

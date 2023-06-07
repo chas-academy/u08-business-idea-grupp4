@@ -14,11 +14,14 @@ import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import Privacy from "./pages/Privacy.jsx";
 import Terms from "./pages/Terms.jsx";
-import Post from "./pages/Post.jsx";
-import Chat from "./components/Chat.jsx";
 import CategoryFeed from "./components/ProfileFeed/CategoryFeed.jsx";
 import PostFeed from "./components/ProfileFeed/PostFeed.jsx";
 import SavedFeed from "./components/ProfileFeed/SavedFeed.jsx";
+import Login from "./components/Login.jsx";
+import CreateCategory from "./pages/CreateCategory.jsx";
+import EditProfile from "./pages/editProfile.jsx";
+import Post from "./pages/post.jsx";
+
 
 const router = createBrowserRouter([
   {
@@ -57,10 +60,14 @@ const router = createBrowserRouter([
         path: "/terms",
         element: <Terms />,
       },
+      {
+        path: "login",
+        element: <Login />,
+      },
     ],
   },
   {
-    path: "/home",
+    path: "home",
     element: (
       <>
         <div className="xl:flex xl:flex-row">
@@ -88,7 +95,7 @@ const router = createBrowserRouter([
           {
             path: "saved",
             element: <SavedFeed />,
-          },
+          }
         ],
       },
       {
@@ -100,12 +107,16 @@ const router = createBrowserRouter([
         element: <CreatePost />,
       },
       {
-        path: "post/:id",
-        element: <Post />,
+        path: "create-category",
+        element: <CreateCategory />,
       },
       {
-        path: "chat",
-        element: <Chat />,
+        path: "edit-profile/:id",
+        element: <EditProfile />,
+      },
+      {
+        path: "Post",
+        element: <Post />,
       },
     ],
   },

@@ -67,62 +67,64 @@ function UserProfile() {
 
   let storedUsername = window.localStorage.getItem("username");
 
-  return (
-    <>
-      <div className="flex justify-center">
-        <div className="flex justify-between lg:w-7/12 w-11/12 sm:pt-20 pt-10 pb-10 sm:px-12">
-          <div>
-            {!profilePicture ? (
-              <img
-                className="sm:h-48 sm:w-48 w-32 h-32 rounded-full object-cover"
-                src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg"
-                alt="Profile Picture"
-              />
-            ) : (
-              <img
-                className="sm:h-48 sm:w-48 w-32 h-32 rounded-full object-cover"
-                src={profilePicture}
-                alt="Profile Picture"
-              />
-            )}
-          </div>
-          <div className="flex flex-col space-y-4 ml-5">
-            <div className="flex flex-row sm:space-x-16 space-x-6 pt-2 text-xs">
-              <div className="flex flex-col text-center">
-                <h4 className="sm:text-2xl">47</h4>
-                <p>recipes</p>
-              </div>
-              <div className="flex flex-col text-center">
-                <h4 className="sm:text-2xl">500k</h4>
-                <p>followers</p>
-              </div>
-              <div className="flex flex-col text-center">
-                <h4 className="sm:text-2xl">100</h4>
-                <p>following</p>
-              </div>
+    return (
+        <>
+        <div className="flex justify-center">
+            <div className="flex justify-between lg:w-7/12 w-11/12 sm:pt-20 pt-10 pb-10 sm:px-12">
+                <div>
+                   {!profilePicture ? (
+                      <img
+                      className="sm:h-48 sm:w-48 w-32 h-32 rounded-full object-cover"
+                      src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg"
+                      alt="Profile Picture"
+                    />
+                   ) : (
+                    <img
+                    className="sm:h-48 sm:w-48 w-32 h-32 rounded-full object-cover"
+                    src={profilePicture}
+                    alt="Profile Picture"
+                    />
+                   )}
+                </div>
+                <div className="flex flex-col space-y-4 ml-5">
+                    <div className="flex flex-row sm:space-x-16 space-x-6 pt-2 text-xs">
+                        <div className="flex flex-col text-center">
+                            <h4 className="sm:text-2xl">47</h4>
+                            <p>recipes</p>
+                        </div>
+                        <div className="flex flex-col text-center">
+                            <h4 className="sm:text-2xl">500k</h4>
+                            <p>followers</p>
+                        </div>
+                        <div className="flex flex-col text-center">
+                            <h4 className="sm:text-2xl">100</h4>
+                            <p>following</p>
+                        </div>
+                    </div>
+                    {/* CONDITIONAL RENDERING FOR USER */}
+                    {username === storedUsername && (
+                    <Link to={`/home/edit-profile/${storedUsername}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:text-lg text-xs text-center">
+                    Follow
+                    </Link>
+                        )}
+                    {username === storedUsername && (
+                    <Link to={`/home/edit-profile/${storedUsername}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:text-lg text-xs text-center">
+                    Edit profile
+                    </Link>
+                        )}
+                </div>
             </div>
-            {/* CONDITIONAL RENDERING FOR USER */}
-            {username === storedUsername && (
-              <Link
-                to={`/home/edit-profile/${storedUsername}`}
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:text-lg text-xs text-center"
-              >
-                Edit profile
-              </Link>
-            )}
-          </div>
         </div>
-      </div>
-      <div className="flex justify-center">
-        <div className="flex flex-col lg:w-7/12 w-11/12 space-y-3">
-          <h5 className="text-xs font-bold">{username}</h5>
-          <p>{bio}</p>
+        <div className="flex justify-center">
+            <div className="flex flex-col lg:w-7/12 w-11/12 space-y-3">
+                <h5 className="text-xs font-bold">{username}</h5>
+                <p>{bio}</p>
+            </div>
         </div>
-      </div>
-
-      <div className="flex justify-center sm:pt-20 pt-10">
-        <div className="flex flex-col text-center sm:text-lg text-sm lg:w-7/12 w-11/12 space-y-3">
-          <h1 className="tracking-widest font-light">CATEGORIES</h1>
+        
+        <div className="flex justify-center sm:pt-20 pt-10">
+            <div className="flex flex-col text-center sm:text-lg text-sm lg:w-7/12 w-11/12 space-y-3">
+                <h1 className="tracking-widest font-light">CATEGORIES</h1>
 
           <div className="flex flex-row">
             <div className="flex flex-row sm:space-x-5 space-x-2 pb-2 sm:text-lg text-xs overflow-x-scroll">
