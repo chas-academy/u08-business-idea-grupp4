@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
-import CommentList from './CommentList';
-import Chat from './Chat';
 
-const Post = () => {
+const Post = ({ addComment  }) => {
   const [comments, setComments] = useState([]);
 
-  const addComment = (comment) => {
-    setComments([...comments, comment]);
-  };
-
+ 
   const updateComment = (updatedComment) => {
     const updatedComments = comments.map((comment) =>
       comment.id === updatedComment.id ? updatedComment : comment
@@ -22,14 +17,9 @@ const Post = () => {
   };
 
   return (
-    <div>
-      <h1>Aplicación de Comentarios</h1>
-      <CommentList
-        comments={comments}
-        updateComment={updateComment}
-        deleteComment={deleteComment}
-      />
-      <Chat addComment={addComment} />
+    <div >
+    
+     
     </div>
   );
 };

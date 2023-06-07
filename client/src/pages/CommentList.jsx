@@ -4,7 +4,6 @@ import Comment from './Comment';
 const CommentList = ({ comments, updateComment, deleteComment }) => {
   return (
     <div>
-      <h2>Comentarios</h2>
       {comments.map((comment) => (
         <Comment
           key={comment.id}

@@ -1,15 +1,70 @@
 import React, { useState } from 'react';
+import Post from './Post';
 import CommentList from './CommentList';
 
+
+
+// eslint-disable-next-line react/prop-types
 const Chat = () => {
-
-  const [comment, setComment] = useState('');
-    const [comments, setComments] = useState([]);
-
   const addComment = (comment) => {
     setComments([...comments, comment]);
   };
+  const [score, setScore] = useState(0);
 
+  const [comment, setComment] = useState('');
+  const [rating, setRating] = useState(0);
+  const [comments, setComments] = useState([]);
+
+
+  const handleCommentChange = (event) => {
+    setComment(event.target.value);
+  };
+
+  const handleRating = (event) => {
+    const selectedScore = parseInt(event.target.value);
+    setScore(selectedScore);
+  };
+
+
+
+
+ 
+  const handleRatingChange = (event) => {
+    setRating(parseInt(event.target.value));
+  };
+
+  const handleCommentSubmit = (event) => {
+    event.preventDefault();
+    console.log('Comentario:', comment);
+    console.log('Puntuación:', score);    const newComment = {
+      id: Date.now(),
+      comment: comment,
+      rating: rating
+    };
+    setComments([...comments, newComment]);
+    setComment('');
+    setRating(0);
+    addComment(newComment);
+    setComment('');
+    setScore(0);
+  };
+
+  const renderStarRating = (rating) => {
+    const filledStars = '★'.repeat(rating);
+    const emptyStars = '☆'.repeat(5 - rating);
+    return filledStars + emptyStars;
+  };
+
+  const renderComments = () => {
+    return comments.map((comment, index) => (
+      <div key={index} className="comment">
+        <p>{comment.comment}</p>
+        <div className="rating">{renderStarRating(comment.rating)}</div>
+      </div>
+    ));
+  };
+
+ 
   const updateComment = (updatedComment) => {
     const updatedComments = comments.map((comment) =>
       comment.id === updatedComment.id ? updatedComment : comment
@@ -22,15 +77,6 @@ const Chat = () => {
     setComments(updatedComments);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const newComment = {
-      id: Date.now(),
-      content: comment
-    };
-    addComment(newComment);
-    setComment('');
-  };
 
   const [likes, setLikes] = useState(0);
   const [liked, setLiked] = useState(false);
@@ -45,7 +91,6 @@ const Chat = () => {
       setLiked(true);
     }
   };
- 
 
   return (
     <div>
@@ -94,30 +139,40 @@ const Chat = () => {
     <div className="ml-2 p-3 w-full">
       <div className=" items-center justify-between">
       
-      <form onSubmit={handleSubmit}>
-        <h2>Kommentar</h2>
-        <br /> 
-        <textarea 
-          value={comment}
-          onChange={(event) => setComment(event.target.value)}
-          placeholder="Lägg till en kommentar..."
-          required
-        />
-       <button className="  px-4 mt-3 py-2 ml-20  mr-10 rounded-xl bg-green-300 text-black font-medium" type="submit">Post</button>
-      </form>
+      <form onSubmit={handleCommentSubmit}>
+      <h2>Kommentar</h2>
+      <br />
+      <textarea
+        value={comment}
+        onChange={handleCommentChange}
+        placeholder="Lägg till en kommentar..."
+        required
+      />
+      <select value={rating} onChange={handleRatingChange}>
+        <option value={0}>0</option>
+        <option value={1}>1</option>
+        <option value={2}>2</option>
+        <option value={3}>3</option>
+        <option value={4}>4</option>
+        <option value={5}>5</option>
+      </select>
+      <button className="px-4 mt-3 py-2 ml-20 mr-10 rounded-xl bg-black text-white font-medium" type="submit">
+        Post
+      </button>
+    </form>
+    <div className="comments">{renderComments()}</div>
+      </div>
+      <div className="mt-4 text-sm">
+      <div className=" items-center justify-between ">
 
-       <div>
-      <h1>Aplicación de Comentarios</h1>
       <CommentList
         comments={comments}
         updateComment={updateComment}
         deleteComment={deleteComment}
       />
-      <Chat addComment={addComment} />
+     
     </div>
-      </div>
-      <div className="mt-4 text-sm">
-        
+      <Post addComment={addComment} />
         </div>
       </div>
      </div>

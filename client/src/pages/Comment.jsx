@@ -3,7 +3,16 @@ import React, { useState } from 'react';
 const Comment = ({ comment, updateComment, deleteComment }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [updatedComment, setUpdatedComment] = useState(comment.content);
+  const [score, setScore] = useState(0);
 
+
+  const incrementScore = () => {
+    setScore(score + 1);
+  };
+
+  const decrementScore = () => {
+    setScore(score - 1);
+  };
   const handleEdit = () => {
     setIsEditing(true);
   };
@@ -27,16 +36,19 @@ const Comment = ({ comment, updateComment, deleteComment }) => {
         <div>
           <textarea
             value={updatedComment}
-            onChange={(event) => setUpdatedComment(event.target.value)}
+            onChange={(event)=> setUpdatedComment(event.target.value)}
           />
-          <button onClick={handleUpdate}>Guardar</button>
+          <button onClick={handleUpdate}>Spara</button>
         </div>
       ) : (
-        <div>
-          <p>{comment.content}</p>
-          <button onClick={handleEdit}>Editar</button>
-          <button onClick={handleDelete}>Delete</button>
-        </div>
+        <div className="flex rounded-xl  bg-white border border-gray-200 rounded-lg shadow p-2 col-span-10">
+          <br />     
+          <p className=" px-5  py-3 text-black text-base">{comment.content}</p>
+         <div className=' flex space-x-2 mx-40 ' >
+          <button  className="  px-2  mt-3 py-1 mr-2 rounded-xl bg-black text-white   text-xs	" onClick={handleEdit}>Editar</button>
+          <button  className="   px-2 mt-3 py-1 mr-2  rounded-xl bg-black text-white  text-xs	" onClick={handleDelete}>Delete</button>
+       </div> 
+       </div>
       )}
     </div>
   );
