@@ -5,36 +5,33 @@ import axios from "axios";
 
 
 function Navbar() {
-    let profileUrl = window.localStorage.getItem("userID");
+    let profileUrl = window.localStorage.getItem("username");
     const [cookies, , removeCookies] = useCookies(["access_token"]);
     const [profilePicture, setProfilePicture] = useState('') 
-    let userID = window.localStorage.getItem("userID");
     const [username, setUsername] = useState("");
 
     const navigate = useNavigate();
    
-
-
-    
     useEffect(() => {
       const fetchUserProfile = async () => {
         let userID = window.localStorage.getItem("userID");
+        let username = window.localStorage.getItem("username");
     
         if (typeof userID !== 'undefined' && userID !== null) {
-
+          console.log("?")
         } else {
         navigate('/');
         }
     
         try {
-          const response = await axios.get(`http://localhost:3001/auth/profile/${userID}`, {
+          const response = await axios.get(`http://localhost:3001/auth/profile/${username}`, {
             headers: {
               Authorization: `Bearer ${cookies.access_token}`,
             },
           });
     
           console.log(response.data);
-          if (response.data && response.data.user) {
+          if (response.data && response.data.user && response.data.user.username !== undefined) {
             setUsername(response.data.user.username);
             setProfilePicture(response.data.user?.profilePicture)
           }
@@ -46,15 +43,14 @@ function Navbar() {
       fetchUserProfile();
     }, [cookies.access_token, navigate]);
     
-   
-
-
     const logout = () => {
       removeCookies("access_token");
       window.localStorage.removeItem("userID");
+      window.localStorage.removeItem("username");
 
       navigate("/");
     };
+    
     return (
       <>
       {/* NAVBAR DEKSTOP */}
@@ -80,7 +76,7 @@ function Navbar() {
           </div>
           <ul className="space-y-2 text-lg">
               <li>
-                  <Link to={`user/${profileUrl}`} className="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
+                  <Link to={`profile/${profileUrl}`} className="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
                       <span className="text-gray-600">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-6" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2M7.07 18.28c.43-.9 3.05-1.78 4.93-1.78s4.5.88 4.93 1.78A7.893 7.893 0 0 1 12 20c-1.86 0-3.57-.64-4.93-1.72m11.29-1.45c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33A7.928 7.928 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.5-1.64 4.83M12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6m0 5a1.5 1.5 0 0 1-1.5-1.5A1.5 1.5 0 0 1 12 8a1.5 1.5 0 0 1 1.5 1.5A1.5 1.5 0 0 1 12 11Z"/></svg>
                       </span>

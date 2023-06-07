@@ -9,7 +9,12 @@ import { categoryRouter } from "./routes/category.js";
 import { imageRouter } from "./routes/images.js";
 
 const app = express();
+
+// parse json objects
 app.use(express.json());
+// parse url encoded objects- data sent throught the url
+app.use(express.urlencoded({ extended: true }));
+// cors är bra så att vi kan ha server och client isär
 app.use(cors());
 
 const port = 3001;
