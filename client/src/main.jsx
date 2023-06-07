@@ -22,6 +22,8 @@ import Post from "./pages/post.jsx";
 import CategoryFeed from "./components/ProfileFeed/CategoryFeed.jsx";
 import PostFeed from "./components/ProfileFeed/PostFeed.jsx";
 import SavedFeed from "./components/ProfileFeed/SavedFeed.jsx";
+import Chat from "./pages/Chat.jsx";
+
 
 const router = createBrowserRouter([
   {
@@ -122,6 +124,11 @@ const router = createBrowserRouter([
         path: "post",
         element: <Post />,
       },
+      {
+        path: "chat",
+        element: <Chat />,
+      }
+
     ],
   },
 ]);
