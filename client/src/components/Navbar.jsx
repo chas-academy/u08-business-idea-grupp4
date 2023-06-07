@@ -30,7 +30,7 @@ function Navbar() {
           });
     
           console.log(response.data);
-          if (response.data && response.data.user) {
+          if (response.data && response.data.user && response.data.user.username !== undefined) {
             setUsername(response.data.user.username);
             setProfilePicture(response.data.user?.profilePicture)
           }
@@ -45,6 +45,7 @@ function Navbar() {
     const logout = () => {
       removeCookies("access_token");
       window.localStorage.removeItem("userID");
+      window.localStorage.removeItem("username");
 
       navigate("/");
     };

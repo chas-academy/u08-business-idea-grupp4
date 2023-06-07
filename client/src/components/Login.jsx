@@ -27,6 +27,12 @@ const Login = () => {
         window.localStorage.setItem("userID", response.data.userID);
 
         const userID = window.localStorage.getItem('userID');
+        const username = response.data.user.username;
+
+        // Store the username in window.localStorage
+        window.localStorage.setItem("username", username);
+        console.log("username " + response.data.username);
+
         if (userID !== 'undefined') {
           navigate('/home');
           
@@ -44,7 +50,6 @@ const Login = () => {
       navigate('/');
     }
   };
-  
   
 
   return (
