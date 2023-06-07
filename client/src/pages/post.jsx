@@ -1,5 +1,3 @@
-
-
 function Post() {
   return (
     <div>
@@ -49,7 +47,7 @@ function Post() {
         <p  className="text-sm ">19 hours ago</p>
       </div>
       <div className="mt-4 text-sm">
-        <p>It's such a bright sunny day</p>
+        <p>It is such a bright sunny day</p>
         <div className="ml-3">
           <button className="px-3 mt-3 py-2 rounded-xl bg-green-300 text-black font-medium">Reply</button>
         </div>
@@ -92,7 +90,7 @@ function Post() {
 
 <div className=' flex flex-row-reverse m-2 px-9 '>
     <div className="relative w-20 h-6 inline-flex self-center">
-        <svg className="text-white bg-grey absolute top-0.5 right-0 m-1 pointer-events-none p-1.5 rounded" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25px" height="20px" viewBox="0 0 38 22" version="1.1">
+        <svg className="text-white bg-grey absolute top-0.5 right-0 m-1 pointer-events-none p-1.5 rounded" xmlns="http://www.w3.org/2000/svg" width="25px" height="20px" viewBox="0 0 38 22" version="1.1">
             <g id="ZahnhelferDE—Design" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="ZahnhelferDE–Icon&amp;Asset-Download" transform="translate(-539.000000, -199.000000)" fill="#ffffff" fillRule="nonzero">
                     <g id="Icon-/-ArrowRight-Copy-2" transform="translate(538.000000, 183.521208)">
@@ -139,7 +137,7 @@ function Post() {
 
 <div className="flex items-center mb-4">
     <input id="default-checkbox" type="checkbox" value="" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-    <label htmlFor="default-checkbox" className="ml-2 text-sm font-medium text-gray-900 dark:tex-black-300">1/" tsk salt</label>
+    <label htmlFor="default-checkbox" className="ml-2 text-sm font-medium text-gray-900 dark:tex-black-300">1 tsk salt</label>
 </div>
   
 <div className="flex items-center mb-5">

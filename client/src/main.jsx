@@ -14,14 +14,14 @@ import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import Privacy from "./pages/Privacy.jsx";
 import Terms from "./pages/Terms.jsx";
-import EditProfile from "./pages/editProfile.jsx";
-import CreateCategory from "./pages/CreateCategory.jsx";
-import ProfileP from "./pages/profileP.jsx";
-import Login from "./components/Login.jsx";
-import Post from "./pages/post.jsx";
 import CategoryFeed from "./components/ProfileFeed/CategoryFeed.jsx";
 import PostFeed from "./components/ProfileFeed/PostFeed.jsx";
 import SavedFeed from "./components/ProfileFeed/SavedFeed.jsx";
+import Login from "./components/Login.jsx";
+import CreateCategory from "./pages/CreateCategory.jsx";
+import EditProfile from "./pages/editProfile.jsx";
+import Post from "./pages/post.jsx";
+
 
 const router = createBrowserRouter([
   {
@@ -111,15 +111,11 @@ const router = createBrowserRouter([
         element: <CreateCategory />,
       },
       {
-        path: "user/:id/post/:id",
-        element: <ProfileP />,
-      },
-      {
         path: "edit-profile/:id",
         element: <EditProfile />,
       },
       {
-        path: "post",
+        path: "Post",
         element: <Post />,
       },
     ],

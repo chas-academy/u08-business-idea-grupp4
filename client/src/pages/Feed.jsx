@@ -1,79 +1,90 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
+function Feed() {
+  const navigate = useNavigate();
+  const [post, setPost] = useState(null);
 
-const feedItems = [
-  {
-    username: 'LuddeF',
-    imageUrl: 'https://pagen.se/globalassets/recept/nya-format-pa-bilderna/street-food-tillbehor.jpg?w=734&h=462&mode=crop&resized=true',
-    likes: 10,
-    comments: 5,
-  },
-  {
-    username: 'Amilia_W',
-    imageUrl: 'https://www.visitstockholm.com/media/original_images/wang1.jpg',
-    likes: 20,
-    comments: 8,
-  },
-  {
-    username: 'Hasse',
-    imageUrl: 'https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-03/plant-based-food-mc-220323-02-273c7b.jpg',
-    likes: 10,
-    comments: 5,
-  },
-  {
-    username: 'BakerA',
-    imageUrl: 'https://a.cdn-hotels.com/gdcs/production0/d1513/35c1c89e-408c-4449-9abe-f109068f40c0.jpg?impolicy=fcrop&w=800&h=533&q=medium',
-    likes: 20,
-    comments: 8,
-  },
-  {
-    username: 'Jocelyn',
-    imageUrl: 'https://i.guim.co.uk/img/media/b03e72fd79b4f0b104e17c5d62e9c223ec68e343/0_1344_3409_2045/master/3409.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=ed4d7770ae847d5b2046cb3b281e7fad',
-    likes: 10,
-    comments: 5,
-  },
-  {
-    username: 'Amilia_W',
-    imageUrl: 'https://www.visitstockholm.com/media/original_images/wang1.jpg',
-    likes: 20,
-    comments: 8,
-  },
-  {
-    username: 'LuddeF',
-    imageUrl: 'https://pagen.se/globalassets/recept/nya-format-pa-bilderna/street-food-tillbehor.jpg?w=734&h=462&mode=crop&resized=true',
-    likes: 10,
-    comments: 5,
-  },
-  {
-    username: 'Amilia_W',
-    imageUrl: 'https://www.visitstockholm.com/media/original_images/wang1.jpg',
-    likes: 20,
-    comments: 8,
-  },
-  // Add more feed items as needed
-];
+  useEffect(() => {
+    let isMounted = true;
 
-const Feed = () => {
+    const fetchPost = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:3001/post/posts/6480614809965b94395512a4"
+        );
+
+        if (isMounted) {
+          setPost(response.data.post);
+          console.log(post);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchPost();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  if (window.localStorage.getItem("userID") === "") {
+    navigate("/");
+  }
+
   return (
-    <div className="container mx-auto p-4 flex flex-col items-center justify-center">
-      <h1 className="text-3xl font-bold mb-4">Feeds</h1>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-        {feedItems.map((item, index) => (
-          <div key={index} className="bg-white rounded shadow flex flex-col">
-            <img src={item.imageUrl} alt="Food" className="w-full h-64 object-cover rounded-t" />
-            <div className="p-4 flex-grow">
-              <div className="flex items-center mb-2">
-                <span className="text-sm font-bold">{item.username}</span>
-              </div>
-              <div className="flex items-center mb-2">
-                <span className="mr-2">{item.likes} likes</span>
-                <span className="mr-2">{item.comments} comments</span>
-              </div>
+    <>
+      <div className="w-full h-screen flex flex-col items-center justify-center">
+        <h1>FEED</h1>
+        {post ? (
+          <div className="flex flex-col align-center justify-center border-2 border-black p-5 rounded-md ">
+            <h2>{post.author}</h2>
+            <div className="flex flex-row">
+              {post.pictures && post.pictures.length > 0 ? (
+                post.pictures.map((pictureId) => (
+                  <img
+                    key={pictureId}
+                    src={`http://localhost:3001/post/get/${pictureId}`}
+                    alt=""
+                    className="w-24 h-24 m-1"
+                  />
+                ))
+              ) : (
+                <p>No pictures available</p>
+              )}
             </div>
+            <p>{post.description}</p>
+            <p>Score: {post.reviewScore}</p>
+            <p>Likes: {post.likes}</p>
+            <p>{formatDate(post.createdAt)}</p>
           </div>
-        ))}
+        ) : (
+          <p>Loading post...</p>
+        )}
       </div>
-    </div>
+    </>
   );
-};
+}
+
+function formatDate(dateString) {
+  const date = new Date(dateString);
+
+  const day = date.getDate();
+  const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(
+    date
+  );
+  const year = date.getFullYear();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+
+  const formattedDate = `${day} ${month} ${year} at ${hours}:${minutes
+    .toString()
+    .padStart(2, "0")}`;
+
+  return formattedDate;
+}
 
 export default Feed;
