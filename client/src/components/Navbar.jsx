@@ -5,7 +5,7 @@ import axios from "axios";
 
 
 function Navbar() {
-    let profileUrl = window.localStorage.getItem("userID");
+    let profileUrl = window.localStorage.getItem("username");
     const [cookies, , removeCookies] = useCookies(["access_token"]);
     const [profilePicture, setProfilePicture] = useState('') 
     const [username, setUsername] = useState("");
