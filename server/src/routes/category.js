@@ -1,7 +1,7 @@
 import express from "express";
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 import { CategoryListModel } from "../models/CategoryListSchema.js";
-import { UserModel } from "../models/Users.js";
+// import { UserModel } from "../models/Users.js";
 
 const router = express.Router();
 

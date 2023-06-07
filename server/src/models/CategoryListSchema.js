@@ -7,6 +7,11 @@ const CategoryListSchema = new mongoose.Schema({
     ref: "Recipe",
     required: false,
   },
+  image: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Image",
+    required: false,
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
