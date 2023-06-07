@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [, setCookies] = useCookies(["access_token"]);
+  const [ , setCookies] = useCookies(["access_token"]);
   const navigate = useNavigate();
 
   const Notify = () => {
@@ -26,9 +26,16 @@ const Login = () => {
         setCookies("access_token", response.data.token);
         window.localStorage.setItem("userID", response.data.userID);
 
-        const userID = window.localStorage.getItem("userID");
-        if (userID !== "undefined") {
-          navigate("/home");
+        const userID = window.localStorage.getItem('userID');
+        const username = response.data.user.username;
+
+        // Store the username in window.localStorage
+        window.localStorage.setItem("username", username);
+        console.log("username " + response.data.username);
+
+        if (userID !== 'undefined') {
+          navigate('/home');
+          
         } else {
           navigate("/");
           Notify();
@@ -42,6 +49,7 @@ const Login = () => {
       navigate("/");
     }
   };
+  
 
   return (
     <section className="m-10">
@@ -89,8 +97,7 @@ const Login = () => {
               >
                 Login
               </button>
-              {<p className="p-3 text-black">{Notify}</p>}
-              <ToastContainer />
+                    <ToastContainer />
             </form>
           </div>
         </div>
