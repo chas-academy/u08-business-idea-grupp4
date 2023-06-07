@@ -12,13 +12,9 @@ const ComingSoon = () => {
       </p>
       <p className="text-sm my-3">Comming soon on:</p>
       <div className="flex items-center flex-row">
+        <img src="../images/appstore.png" alt="app-store" className="w-32" />
         <img
-          src="../public/images/appstore.png"
-          alt="app-store"
-          className="w-32"
-        />
-        <img
-          src="../public/images/googleplay.png"
+          src="../images/googleplay.png"
           alt="google-play"
           className="w-32"
         />

@@ -111,7 +111,7 @@ const router = createBrowserRouter([
         element: <CreateCategory />,
       },
       {
-        path: "ProfileP",
+        path: "user/:id/post/:id",
         element: <ProfileP />,
       },
       {
