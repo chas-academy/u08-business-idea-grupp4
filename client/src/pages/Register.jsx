@@ -1,14 +1,10 @@
 import { useRef } from "react";
 import axios from "axios";
-import { useCookies } from "react-cookie";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
-  const [cookies, setCookies] = useCookies(["access_token"]);
-  const navigate = useNavigate();
-
   const emailRef = useRef();
   const usernameRef = useRef();
   const passwordRef = useRef();

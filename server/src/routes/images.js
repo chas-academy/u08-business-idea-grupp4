@@ -43,10 +43,13 @@ router.post("/profile-image", upload.single("avatar"), async (req, res) => {
   }
 });
 
-// Upload multiple recipe pictures
-router.post("/recipe-images", upload.array("recipe", 10), async (req, res) => {
+// Upload recipe pictures (single or multiple)
+router.post("/image", upload.array("recipe", 10), async (req, res) => {
   try {
     const files = req.files;
+
+    const imageIds = [];
+
     const imagePromises = files.map(async (file) => {
       const name = file.originalname;
       const filename = file.path;
@@ -61,12 +64,15 @@ router.post("/recipe-images", upload.array("recipe", 10), async (req, res) => {
       });
 
       console.log("Image is saved");
+
+      imageIds.push(image._id); // Store the image ID
+
       return image;
     });
 
     await Promise.all(imagePromises);
 
-    res.status(200).json({ message: "Images uploaded successfully" });
+    res.status(200).json({ message: "Images uploaded successfully", imageIds });
   } catch (error) {
     console.error(error);
     res.status(500).json({

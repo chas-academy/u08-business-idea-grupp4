@@ -12,8 +12,8 @@ router.post("/register", async (req, res) => {
     return res.status(400).json({ message: "Username already exists" });
   }
   const hashedPassword = await bcrypt.hash(password, 10);
-const newUser = new UserModel({ email, username, password: hashedPassword });
-await newUser.save();
+  const newUser = new UserModel({ email, username, password: hashedPassword });
+  await newUser.save();
   return res.json({ message: "User registered successfully" });
 });
 
@@ -28,7 +28,11 @@ router.post("/login", async (req, res) => {
     return res.json({ message: "Email or password is incorrect" });
   }
   const token = jwt.sign({ id: user._id }, "secret");
-  return res.json({ token, userID: user._id, user: { id: user._id, email: user.email } });
+  return res.json({
+    token,
+    userID: user._id,
+    user: { id: user._id, email: user.email },
+  });
 });
 
 function authenticateToken(req, res, next) {
@@ -42,27 +46,27 @@ function authenticateToken(req, res, next) {
   });
 }
 
-router.get('/profile/:id', authenticateToken, async  (req, res) => {
+router.get("/profile/:id", authenticateToken, async (req, res) => {
   try {
     const userId = req.params.id;
     const user = await UserModel.findById(userId);
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: "User not found" });
     }
     res.json({ user });
   } catch (error) {
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: "Internal server error" });
   }
 });
 
-router.put('/profile/:id', authenticateToken, async (req, res) => {
+router.put("/profile/:id", authenticateToken, async (req, res) => {
   try {
-    const userId = req.user.id; 
+    const userId = req.user.id;
     const { bio, username, password, profilePicture } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await UserModel.findById(userId);
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: "User not found" });
     }
 
     user.bio = bio;
@@ -70,11 +74,24 @@ router.put('/profile/:id', authenticateToken, async (req, res) => {
     user.username = username;
     user.profilePicture = profilePicture;
     await user.save();
-    
 
-    res.json({ message: 'Profile updated successfully' });
+    res.json({ message: "Profile updated successfully" });
   } catch (error) {
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+router.get("/username/:id", async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const user = await UserModel.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const username = user.username;
+    res.json({ username });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error" });
   }
 });
 
