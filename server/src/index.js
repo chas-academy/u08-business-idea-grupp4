@@ -13,7 +13,7 @@ const app = express();
 // parse json objects
 app.use(express.json());
 // parse url encoded objects- data sent throught the url
-app.use(express.urlencoded({ extended: true}));
+app.use(express.urlencoded({ extended: true }));
 // cors är bra så att vi kan ha server och client isär
 app.use(cors());
 
@@ -28,7 +28,9 @@ app.use("/post", postRouter);
 app.use("/category", categoryRouter);
 
 mongoose
-  .connect("mongodb+srv://bakerhaider:hmshood@cluster0.ts1n8aq.mongodb.net/Cluster0?retryWrites=true&w=majority")
+  .connect(
+    "mongodb+srv://bakerhaider:hmshood@cluster0.ts1n8aq.mongodb.net/Cluster0?retryWrites=true&w=majority"
+  )
   .then(() => {
     console.log("Connected to MongoDB");
   })
