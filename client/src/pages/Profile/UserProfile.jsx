@@ -49,11 +49,6 @@ function UserProfile() {
 
     return (
         <>
-        <div>
-        {username === storedUsername && (
-         <button>Button</button>
-            )}
-        </div>
         <div className="flex justify-center">
             <div className="flex justify-between lg:w-7/12 w-11/12 sm:pt-20 pt-10 pb-10 sm:px-12">
                 <div>
