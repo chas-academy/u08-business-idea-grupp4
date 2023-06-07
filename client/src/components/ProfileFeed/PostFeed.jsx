@@ -1,10 +1,9 @@
+import { Link } from "react-router-dom";
 
-function UserProfile() {
+function PostFeed() {
 
     return (
         <>
-        <div className="flex justify-center pt-5">
-        <div className="grid grid-cols-3 sm:gap-3 gap-1 lg:w-7/12 w-11/12">
             <div className="bg-gray-200 sm:h-48 h-28">
                 <Link to="">
                     <img className="h-full w-full object-cover" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80" alt="Profile Picture"/>
@@ -55,10 +54,8 @@ function UserProfile() {
                 <img className="h-full w-full object-cover" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Profile Picture"/>
             </Link>
             </div>
-        </div>
-        </div>
         </>
     ) 
 }
 
-export default CategoryFeed
+export default PostFeed;

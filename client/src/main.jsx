@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import UserProfile from "./pages/UserProfile.jsx";
+import UserProfile from "./pages/Profile/UserProfile.jsx";
 import Navbar from "./components/Navbar.jsx";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
@@ -14,10 +14,12 @@ import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import Privacy from "./pages/Privacy.jsx";
 import Terms from "./pages/Terms.jsx";
-import EditProfile from "./pages/editProfile.jsx";
-import CreateCategory from "./pages/CreateCategory.jsx";
-import ProfileP from "./pages/ProfileP.jsx";
+import CategoryFeed from "./components/ProfileFeed/CategoryFeed.jsx";
+import PostFeed from "./components/ProfileFeed/PostFeed.jsx";
+import SavedFeed from "./components/ProfileFeed/SavedFeed.jsx";
 import Login from "./components/Login.jsx";
+import CreateCategory from "./pages/CreateCategory.jsx";
+import EditProfile from "./pages/editProfile.jsx";
 import Post from "./pages/post.jsx";
 
 const router = createBrowserRouter([
@@ -78,8 +80,22 @@ const router = createBrowserRouter([
         element: <Feed />,
       },
       {
-        path: "user/:id",
+        path: "profile/:username",
         element: <UserProfile />,
+        children: [
+          {
+            path: "",
+            element: <PostFeed />,
+          },
+          {
+            path: "category",
+            element: <CategoryFeed />,
+          },
+          {
+            path: "saved",
+            element: <SavedFeed />,
+          },
+        ],
       },
       {
         path: "search",
@@ -94,15 +110,11 @@ const router = createBrowserRouter([
         element: <CreateCategory />,
       },
       {
-        path: "ProfileP",
-        element: <ProfileP />,
-      },
-      {
         path: "edit-profile/:id",
         element: <EditProfile />,
       },
       {
-        path: "post",
+        path: "Post",
         element: <Post />,
       },
     ],

@@ -6,9 +6,10 @@ import Info from "../components/Info";
 const LandingPage = () => {
   return (
     <>
-      <div className="flex items-center">
-        <IntroText></IntroText>
+    <div className="flex items-center flex-col sm:flex-row sm:justify-center">
         <Login></Login>
+         <IntroText></IntroText>
+        
       </div>
       <Example></Example>
       <Info></Info>

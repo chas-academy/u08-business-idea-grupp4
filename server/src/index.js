@@ -2,22 +2,32 @@ import express from "express";
 
 import cors from "cors";
 import mongoose from "mongoose";
+import multer from "multer";
 import { userRouter } from "./routes/users.js";
-import { imageRouter } from "./routes/images.js";
+import { postRouter } from "./routes/posts.js";
 import dotenv from "dotenv";
 
 dotenv.config();
+import { imageRouter } from "./routes/images.js";
 
 const app = express();
+
+// parse json objects
 app.use(express.json());
+// parse url encoded objects- data sent throught the url
+app.use(express.urlencoded({ extended: true }));
+// cors är bra så att vi kan ha server och client isär
 app.use(cors());
 
 const port = 3001;
 
-app.use("/auth", userRouter);
-app.use("/auth", imageRouter);
+const upload = multer({ dest: "uploads/" });
 
-const dbConnectionString = process.env.DB_CONNECTION_STRING;
+app.use("/auth", userRouter);
+app.use("/api", userRouter);
+app.use("/post", imageRouter);
+app.use("/post", postRouter);
+app.use("/category", categoryRouter);
 
 mongoose
   .connect(dbConnectionString)

@@ -5,12 +5,17 @@ const CategoryListSchema = new mongoose.Schema({
   post: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Recipe",
-    required: true,
+    required: false,
+  },
+  image: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Image",
+    required: false,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
+    ref: "users",
+    required: false,
   },
 });
 
