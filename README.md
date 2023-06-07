@@ -37,3 +37,8 @@ https://www.figma.com/file/SlP2zQ2x16dF54yWSjMw6e/U08?node-id=0%3A1&t=sltY8wcMJ5
 ## Licens
 
 Detta projekt är licensierat under MIT-licensen.
+
+
+
+## Deployad version
+https://tasteful-u08.netlify.app/
