@@ -1,52 +1,59 @@
 import axios from "axios";
 import { useCookies } from "react-cookie";
-import { useNavigate, Link, Outlet } from "react-router-dom";
+import { useNavigate, Link, Outlet, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 function UserProfile() {
-        const [username, setUsername] = useState("");
-        const [bio, setBio] = useState('')
-        const [cookies, , ] = useCookies(["access_token"]);
-        const navigate = useNavigate();
-        const [profilePicture, setProfilePicture] = useState('')        
-        
-        useEffect(() => {
-          const fetchUserProfile = async () => {
-            let userID = window.localStorage.getItem("userID");
-            let username = window.localStorage.getItem("username");
-        
-            if (typeof userID !== 'undefined' && userID !== null) {
-                console.log("?");
-            } else {
-            navigate('/');
-            }
-        
-            try {
-              const response = await axios.get(`http://localhost:3001/auth/profile/user/${username}`, {
-                headers: {
-                  Authorization: `Bearer ${cookies.access_token}`,
-                },
-              });
-        
-              console.log(response.data);
-              if (response.data && response.data.user) {
-                setUsername(response.data.user.username);
-                setBio(response.data.user?.bio)
-                setProfilePicture(response.data.user?.profilePicture)
-              }
-            } catch (error) {
-              console.error(error);
-            }
-          };
-        
-          fetchUserProfile();
-        }, [cookies.access_token, navigate]);
-      
-        let profileUrl = window.localStorage.getItem('userID')
-        
+  const [username, setUsername] = useState("");
+  const [bio, setBio] = useState("");
+  const [cookies, , ] = useCookies(["access_token"]);
+  const navigate = useNavigate();
+  const [profilePicture, setProfilePicture] = useState("");
+  const { username: routeUsername } = useParams();
+
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      let userID = window.localStorage.getItem("userID");
+      let storedUsername = window.localStorage.getItem("username");
+      const targetUsername = routeUsername || storedUsername;
+
+      if (typeof userID !== 'undefined' && userID !== null) {
+        console.log("?");
+      } else {
+        navigate('/');
+      }
+
+      try {
+        const response = await axios.get(`http://localhost:3001/auth/profile/${targetUsername}`, {
+          headers: {
+            Authorization: `Bearer ${cookies.access_token}`,
+          },
+        });
+
+        console.log(response.data);
+        if (response.data && response.data.user) {
+          setUsername(response.data.user.username);
+          setBio(response.data.user?.bio);
+          setProfilePicture(response.data.user?.profilePicture);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchUserProfile();
+    }, [cookies.access_token, navigate, routeUsername]);
+
+    let profileUrl = window.localStorage.getItem('userID');
+    let storedUsername = window.localStorage.getItem('username');
 
     return (
         <>
+        <div>
+        {username === storedUsername && (
+         <button>Button</button>
+            )}
+        </div>
         <div className="flex justify-center">
             <div className="flex justify-between lg:w-7/12 w-11/12 sm:pt-20 pt-10 pb-10 sm:px-12">
                 <div>
@@ -79,10 +86,12 @@ function UserProfile() {
                             <p>following</p>
                         </div>
                     </div>
-                    {/* MAKE CONDITIONAL RENDERING FOR USER AND PROFILE */}
+                    {/* CONDITIONAL RENDERING FOR USER */}
+                    {username === storedUsername && (
                     <Link to={`/home/edit-profile/${profileUrl}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:text-lg text-xs text-center">
                     Edit profile
                     </Link>
+                        )}
                 </div>
             </div>
         </div>
@@ -121,10 +130,11 @@ function UserProfile() {
                             <p>Drinks</p>
                         </Link>
                     </div>
-                    {/* MAKE AN IF ELSE STATEMENT FOR USER AND PROFILE */}
+                    {username === storedUsername && (
                     <Link to={`/home/create-category`}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-8 sm:mt-0 -mt-1 mx-2 stroke-2 hover:text-blue-400" viewBox="0 0 48 48"><g fill="none" stroke="currentColor"><rect width="36" height="36" x="6" y="6" rx="3"/><path d="M24 16v16m-8-8h16"/></g></svg>
                     </Link>
+                    )}
                 </div>
 
             </div>

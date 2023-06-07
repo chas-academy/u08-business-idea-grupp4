@@ -42,7 +42,7 @@ function authenticateToken(req, res, next) {
   });
 }
 
-router.get('/profile/:id', authenticateToken, async  (req, res) => {
+router.get('/user/:id', authenticateToken, async  (req, res) => {
   try {
     const userId = req.params.id;
     const user = await UserModel.findById(userId);
@@ -55,7 +55,7 @@ router.get('/profile/:id', authenticateToken, async  (req, res) => {
   }
 });
 
-router.get('/profile/user/:username', authenticateToken, async (req, res) => {
+router.get('/profile/:username', authenticateToken, async (req, res) => {
   try {
     const username = req.params.username;
     const user = await UserModel.findOne({ username });
