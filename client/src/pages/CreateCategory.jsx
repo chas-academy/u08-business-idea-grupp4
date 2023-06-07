@@ -23,7 +23,7 @@ const CreateCategory = () => {
   };
 
   const Notify = () => {
-    return toast('Done!');
+    return toast('Category list created!');
   };
   
 
