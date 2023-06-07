@@ -99,6 +99,11 @@ function UserProfile() {
                     {/* CONDITIONAL RENDERING FOR USER */}
                     {username === storedUsername && (
                     <Link to={`/home/edit-profile/${storedUsername}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:text-lg text-xs text-center">
+                    Follow
+                    </Link>
+                        )}
+                    {username === storedUsername && (
+                    <Link to={`/home/edit-profile/${storedUsername}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:text-lg text-xs text-center">
                     Edit profile
                     </Link>
                         )}
