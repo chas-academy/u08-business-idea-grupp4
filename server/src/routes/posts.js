@@ -9,13 +9,17 @@ const router = express.Router();
 // Create a post
 router.post("/create-post", async (req, res) => {
   try {
-    const { description, duration, instructions } = req.body;
+    const { author, description, ingredients, duration, instructions, user } =
+      req.body;
 
     // Create a new post
     const post = await PostModel.create({
+      author,
       description,
+      ingredients,
       duration,
       instructions,
+      user,
     });
 
     res.status(200).json({ message: "Post created successfully", post });

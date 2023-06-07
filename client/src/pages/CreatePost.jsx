@@ -7,12 +7,13 @@ function CreatePost() {
   /* const [files, setFiles] = useState([]); */
   /* const [imagePreviews, setImagePreviews] = useState([]); */
   /* const inputRef = useRef(null); */
-  /* const [ingredients, setIngredients] = useState([
+  const [ingredients, setIngredients] = useState([
     { name: "", quantity: "", unit: "" },
-  ]); */
+  ]);
   const [instructions, setInstructions] = useState([
     { step: 1, description: "" },
   ]);
+  const userId = localStorage.getItem("userID");
 
   /*   // Handles the images
   const handleFileChange = () => {
@@ -23,7 +24,7 @@ function CreatePost() {
     setImagePreviews(previews);
   }; */
 
-  /*  // Handles the ingredients
+  // Handles the ingredients
   const handleIngredientChange = (index, field, value) => {
     const updatedIngredients = [...ingredients];
     updatedIngredients[index][field] = value;
@@ -38,7 +39,7 @@ function CreatePost() {
     const updatedIngredients = [...ingredients];
     updatedIngredients.splice(index, 1);
     setIngredients(updatedIngredients);
-  }; */
+  };
 
   // Handles the instructions
   const handleInstructionChange = (index, field, value) => {
@@ -69,13 +70,21 @@ function CreatePost() {
 
   const handleSubmit = async () => {
     try {
+      const response = await axios.get(
+        `http://localhost:3001/api/username/${userId}`
+      );
+      const { username } = response.data;
       await axios.post("http://localhost:3001/post/create-post", {
+        author: username,
         description,
+        ingredients,
         duration,
         instructions,
+        user: userId,
       });
 
-      console.log("Created poste successfully");
+      console.log("Created post successfully");
+      console.log("Username:", username);
     } catch (error) {
       console.error("Failed to create post:", error);
     }
@@ -140,7 +149,7 @@ function CreatePost() {
             onChange={(e) => setDescription(e.target.value)}
             className="bg-gray-50 border border-black text-gray-900 sm:text-sm rounded-full  block w-full p-2.5 dark:bg-white-700 "
           />
-          {/* {ingredients.map((ingredient, index) => (
+          {ingredients.map((ingredient, index) => (
             <div className="flex items-center space-x-2" key={index}>
               <input
                 type="text"
@@ -188,7 +197,7 @@ function CreatePost() {
                 </button>
               )}
             </div>
-          ))} */}
+          ))}
           {instructions.map((instruction, index) => (
             <div className="flex items-center space-x-2" key={index}>
               <span className="text-white">{instruction.step}. </span>

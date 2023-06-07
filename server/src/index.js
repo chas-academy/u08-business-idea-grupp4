@@ -16,6 +16,7 @@ const port = 3001;
 const upload = multer({ dest: "uploads/" });
 
 app.use("/auth", userRouter);
+app.use("/api", userRouter);
 app.use("/post", postRouter);
 app.use("/category", categoryRouter);
 
