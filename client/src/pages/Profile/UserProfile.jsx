@@ -10,6 +10,7 @@ function UserProfile() {
   const navigate = useNavigate();
   const [profilePicture, setProfilePicture] = useState("");
   const { username: routeUsername } = useParams();
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -46,6 +47,23 @@ function UserProfile() {
 
     fetchUserProfile();
   }, [cookies.access_token, navigate, routeUsername, username, bio]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userID = window.localStorage.getItem("userID");
+        const response = await axios.get(
+          `http://localhost:3001/category/categories/${userID}`
+        );
+        console.log(response.data);
+        setCategories(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   let storedUsername = window.localStorage.getItem("username");
 
@@ -108,48 +126,16 @@ function UserProfile() {
 
           <div className="flex flex-row">
             <div className="flex flex-row sm:space-x-5 space-x-2 pb-2 sm:text-lg text-xs overflow-x-scroll">
-              <Link
-                to="category"
-                className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-1 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline"
-              >
-                <p>Cake</p>
-              </Link>
-              <Link
-                to=""
-                className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-1 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline"
-              >
-                <p>Pasta</p>
-              </Link>
-              <Link
-                to=""
-                className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-1 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline"
-              >
-                <p>Drinks</p>
-              </Link>
-              <Link
-                to=""
-                className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-1 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline"
-              >
-                <p>Drinks</p>
-              </Link>
-              <Link
-                to=""
-                className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-1 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline"
-              >
-                <p>Drinks</p>
-              </Link>
-              <Link
-                to=""
-                className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-1 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline"
-              >
-                <p>Drinks</p>
-              </Link>
-              <Link
-                to=""
-                className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-1 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline"
-              >
-                <p>Drinks</p>
-              </Link>
+              {categories.map((category, index) => (
+                <div key={index}>
+                  <Link
+                    to="category"
+                    className="flex items-center space-x-3 text-gray-700 bg-gray-200 py-1 px-6 rounded-md font-medium hover:bg-gray-300 focus:bg-gray-200 focus:shadow-outline"
+                  >
+                    <p>{category.title}</p>
+                  </Link>
+                </div>
+              ))}
             </div>
             {username === storedUsername && (
               <Link to={`/home/create-category`}>
