@@ -1,5 +1,7 @@
 import { useState, useRef } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function CreatePost() {
   const [description, setDescription] = useState("");
@@ -14,6 +16,10 @@ function CreatePost() {
     { step: 1, description: "" },
   ]);
   const userId = localStorage.getItem("userID");
+
+  const Notify = () => {
+    toast("Post created!");
+  };
 
   // Handles the images
   const handleFileChange = () => {
@@ -79,7 +85,7 @@ function CreatePost() {
       files.forEach((file) => {
         formData.append("recipe", file);
       });
-
+      Notify();
       const uploadResponse = await axios.post(
         "http://localhost:3001/post/image",
         formData,
@@ -278,6 +284,7 @@ function CreatePost() {
           >
             POST
           </button>
+          <ToastContainer />
         </div>
       </div>
     </div>
