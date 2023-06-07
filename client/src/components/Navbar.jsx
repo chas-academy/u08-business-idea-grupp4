@@ -4,10 +4,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function Navbar() {
-  let profileUrl = window.localStorage.getItem("userID");
+  let profileUrl = window.localStorage.getItem("username");
   const [cookies, , removeCookies] = useCookies(["access_token"]);
   const [profilePicture, setProfilePicture] = useState("");
-  let userID = window.localStorage.getItem("userID");
   const [username, setUsername] = useState("");
 
   const navigate = useNavigate();
@@ -15,15 +14,17 @@ function Navbar() {
   useEffect(() => {
     const fetchUserProfile = async () => {
       let userID = window.localStorage.getItem("userID");
+      let username = window.localStorage.getItem("username");
 
       if (typeof userID !== "undefined" && userID !== null) {
+        console.log("?");
       } else {
         navigate("/");
       }
 
       try {
         const response = await axios.get(
-          `http://localhost:3001/auth/profile/${userID}`,
+          `http://localhost:3001/auth/profile/${username}`,
           {
             headers: {
               Authorization: `Bearer ${cookies.access_token}`,
@@ -32,7 +33,11 @@ function Navbar() {
         );
 
         console.log(response.data);
-        if (response.data && response.data.user) {
+        if (
+          response.data &&
+          response.data.user &&
+          response.data.user.username !== undefined
+        ) {
           setUsername(response.data.user.username);
           setProfilePicture(response.data.user?.profilePicture);
         }
@@ -47,9 +52,11 @@ function Navbar() {
   const logout = () => {
     removeCookies("access_token");
     window.localStorage.removeItem("userID");
+    window.localStorage.removeItem("username");
 
     navigate("/");
   };
+
   return (
     <>
       {/* NAVBAR DEKSTOP */}
@@ -79,7 +86,7 @@ function Navbar() {
           <ul className="space-y-2 text-lg">
             <li>
               <Link
-                to={`user/${profileUrl}`}
+                to={`profile/${profileUrl}`}
                 className="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline"
               >
                 <span className="text-gray-600">

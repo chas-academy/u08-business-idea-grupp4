@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import UserProfile from "./pages/UserProfile.jsx";
+import UserProfile from "./pages/Profile/UserProfile.jsx";
 import Navbar from "./components/Navbar.jsx";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
@@ -16,6 +16,9 @@ import Privacy from "./pages/Privacy.jsx";
 import Terms from "./pages/Terms.jsx";
 import Post from "./pages/Post.jsx";
 import Chat from "./components/Chat.jsx";
+import CategoryFeed from "./components/ProfileFeed/CategoryFeed.jsx";
+import PostFeed from "./components/ProfileFeed/PostFeed.jsx";
+import SavedFeed from "./components/ProfileFeed/SavedFeed.jsx";
 
 const router = createBrowserRouter([
   {
@@ -71,8 +74,22 @@ const router = createBrowserRouter([
         element: <Feed />,
       },
       {
-        path: "user/:id",
+        path: "profile/:username",
         element: <UserProfile />,
+        children: [
+          {
+            path: "",
+            element: <PostFeed />,
+          },
+          {
+            path: "category",
+            element: <CategoryFeed />,
+          },
+          {
+            path: "saved",
+            element: <SavedFeed />,
+          },
+        ],
       },
       {
         path: "search",
