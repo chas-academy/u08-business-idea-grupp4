@@ -44,38 +44,42 @@ router.post("/profile-image", upload.single("avatar"), async (req, res) => {
 });
 
 // Upload recipe pictures (single or multiple)
-router.post("/recipe-images", upload.array("recipe", 10), async (req, res) => {
-  try {
-    const files = req.files;
+router.post(
+  "/home/create-post",
+  upload.array("recipe", 10),
+  async (req, res) => {
+    try {
+      const files = req.files;
 
-    const imagePromises = files.map(async (file) => {
-      const name = file.originalname;
-      const filename = file.path;
-      const fileType = file.mimetype;
+      const imagePromises = files.map(async (file) => {
+        const name = file.originalname;
+        const filename = file.path;
+        const fileType = file.mimetype;
 
-      const image = await ImageModel.create({
-        name,
-        img: {
-          data: await fs.promises.readFile(filename),
-          contentType: fileType,
-        },
+        const image = await ImageModel.create({
+          name,
+          img: {
+            data: await fs.promises.readFile(filename),
+            contentType: fileType,
+          },
+        });
+
+        console.log("Image is saved");
+        return image;
       });
 
-      console.log("Image is saved");
-      return image;
-    });
+      await Promise.all(imagePromises);
 
-    await Promise.all(imagePromises);
-
-    res.status(200).json({ message: "Images uploaded successfully" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      error: "Failed to upload images",
-      errormessage: error.message,
-    });
+      res.status(200).json({ message: "Images uploaded successfully" });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({
+        error: "Failed to upload images",
+        errormessage: error.message,
+      });
+    }
   }
-});
+);
 
 // Get images
 router.get("/get/:id", async (req, res) => {
