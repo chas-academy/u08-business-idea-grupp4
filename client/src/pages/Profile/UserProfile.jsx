@@ -13,6 +13,7 @@ function UserProfile() {
         useEffect(() => {
           const fetchUserProfile = async () => {
             let userID = window.localStorage.getItem("userID");
+            let username = window.localStorage.getItem("username");
         
             if (typeof userID !== 'undefined' && userID !== null) {
                 console.log("?");
@@ -21,7 +22,7 @@ function UserProfile() {
             }
         
             try {
-              const response = await axios.get(`http://localhost:3001/auth/profile/${userID}`, {
+              const response = await axios.get(`http://localhost:3001/auth/profile/user/${username}`, {
                 headers: {
                   Authorization: `Bearer ${cookies.access_token}`,
                 },

@@ -81,7 +81,7 @@ const router = createBrowserRouter([
         element: <Feed />,
       },
       {
-        path: "profile/:id",
+        path: "profile/:username",
         element: <UserProfile />,
         children: [
           {
