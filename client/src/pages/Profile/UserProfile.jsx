@@ -42,18 +42,12 @@ function UserProfile() {
     };
 
     fetchUserProfile();
-    }, [cookies.access_token, navigate, routeUsername]);
+    }, [cookies.access_token, navigate, routeUsername, username, bio]);
 
-    let profileUrl = window.localStorage.getItem('userID');
     let storedUsername = window.localStorage.getItem('username');
 
     return (
         <>
-        <div>
-        {username === storedUsername && (
-         <button>Button</button>
-            )}
-        </div>
         <div className="flex justify-center">
             <div className="flex justify-between lg:w-7/12 w-11/12 sm:pt-20 pt-10 pb-10 sm:px-12">
                 <div>
@@ -88,7 +82,7 @@ function UserProfile() {
                     </div>
                     {/* CONDITIONAL RENDERING FOR USER */}
                     {username === storedUsername && (
-                    <Link to={`/home/edit-profile/${profileUrl}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:text-lg text-xs text-center">
+                    <Link to={`/home/edit-profile/${storedUsername}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:text-lg text-xs text-center">
                     Edit profile
                     </Link>
                         )}

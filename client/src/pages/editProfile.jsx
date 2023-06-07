@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { useCookies } from "react-cookie";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 
 const EditProfile = () => {
@@ -10,14 +8,9 @@ const EditProfile = () => {
   const [bio, setBio] = useState('');
   const [password, setPassword] = useState('');
   const [profilePicture, setProfilePicture] = useState('');
-
-  const [cookies, , removeCookies] = useCookies(["access_token"]);
+  const [cookies, ] = useCookies(["access_token"]);
   const userID = window.localStorage.getItem('userID');
-
-
-  const Notify = () => {
-    return toast('Profile Updated!');
-  };
+  const navigate = useNavigate();
 
   const handleUpdateProfile = () => {
     axios.put(`http://localhost:3001/auth/profile/${userID}`, { bio, username, password, profilePicture }, {
@@ -26,12 +19,16 @@ const EditProfile = () => {
       }
     })
     .then((response) => {
-      console.log(response.data.message);
-      Notify();
-      setUsername('');
-      setBio('');
-      setPassword('');
+       // Store the username in window.localStorage
+       window.localStorage.setItem("username", username);
+       console.log("username " + response.data.username);
 
+      console.log(response.data.message);
+      setUsername(username);
+      setBio(bio);
+      setPassword('');
+      navigate(`/home/profile/${username}`);
+      navigate(0);
     })
     .catch((error) => {
       console.log(error);
@@ -61,8 +58,6 @@ const EditProfile = () => {
             <textarea type="text" id="bio" placeholder="Bio" value={bio} onChange={(e) => setBio(e.target.value)} className="bg-gray-50 border-2 border-gray-900 text-gray-900 sm:text-sm rounded-3xl block w-full p-2.5" />
           </div>
           <button onClick={handleUpdateProfile} className="w-full focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-3xl text-sm px-5 py-2.5 text-center bg-black text-white">SAVE</button>
-          
-          <ToastContainer />
         </div>
       </div>
     </div>
