@@ -14,11 +14,8 @@ import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import Privacy from "./pages/Privacy.jsx";
 import Terms from "./pages/Terms.jsx";
-import EditProfile from "./pages/editProfile.jsx";
-import CreateCategory from "./pages/CreateCategory.jsx";
-import ProfileP from "./pages/profileP.jsx";
-import Login from "./components/Login.jsx";
-import Post from "./pages/post.jsx";
+import Post from "./pages/Post.jsx";
+import Chat from "./pages/Chat.jsx";
 
 const router = createBrowserRouter([
   {
@@ -57,10 +54,6 @@ const router = createBrowserRouter([
         path: "/terms",
         element: <Terms />,
       },
-      {
-        path: "login",
-        element: <Login />,
-      },
     ],
   },
   {
@@ -90,20 +83,12 @@ const router = createBrowserRouter([
         element: <CreatePost />,
       },
       {
-        path: "create-category",
-        element: <CreateCategory />,
-      },
-      {
-        path: "user/:id/post/:id",
-        element: <ProfileP />,
-      },
-      {
-        path: "edit-profile/:id",
-        element: <EditProfile />,
-      },
-      {
         path: "post",
         element: <Post />,
+      },
+      {
+        path: "chat",
+        element: <Chat />,
       },
     ],
   },
