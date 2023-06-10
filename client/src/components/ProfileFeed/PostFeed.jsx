@@ -5,8 +5,8 @@ function PostFeed() {
     return (
         <>
             <div className="bg-gray-200 sm:h-48 h-28">
-                <Link to="">
-                    <img className="h-full w-full object-cover" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80" alt="Profile Picture"/>
+                <Link to="/home/post/">
+                    <img className="h-full w-full object-cover" src="https://images.unsplash.com/photo-1612182062633-9ff3b3598e96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=838&q=80" alt="Profile Picture"/>
                 </Link>
             </div>
             <div className="bg-gray-200 sm:h-48 h-28">

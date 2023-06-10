@@ -102,7 +102,7 @@ function UserProfile() {
                         </div>
                     </div>
                     {/* CONDITIONAL RENDERING FOR USER */}
-                    {username === storedUsername && (
+                    {username !== storedUsername && (
                     <Link to={`/home/edit-profile/${storedUsername}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:text-lg text-xs text-center">
                     Follow
                     </Link>
