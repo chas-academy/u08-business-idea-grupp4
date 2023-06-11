@@ -25,7 +25,9 @@ app.use("/post", postRouter);
 app.use("/category", categoryRouter);
 
 mongoose
-  .connect(process.env.DB_CONNECTION_STRING)
+  .connect(
+    "mongodb+srv://bakerhaider:hmshood@cluster0.ts1n8aq.mongodb.net/Cluster0?retryWrites=true&w=majority"
+  )
   .then(() => {
     console.log("Connected to MongoDB");
   })
@@ -36,3 +38,5 @@ mongoose
 app.listen(port, () => {
   console.log(`running on port ${port}`);
 });
+
+/* process.env.DB_CONNECTION_STRING; */
