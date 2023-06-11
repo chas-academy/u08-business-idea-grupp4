@@ -3,7 +3,7 @@ function Post() {
     <div>
     <div className=' max-w-6xl	max-h-5x1 w-full  shadow-md  rounded-sm	m-10	bg-white'>
  <div className="flex items-center px-5 py-3">
- <img className="h-10 w-10 rounded-full" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Profile Picture"/>                <span className='font-medium text-sm cursor-pointer'></span>
+ <img className="h-10 w-10 rounded-full" src="https://musicart.xboxlive.com/6/cfbf9d01-0000-0000-0000-000000000009/504/image.jpg?w=1920&h=1080" alt="Profile Picture"/>                <span className='font-medium text-sm cursor-pointer'></span>
       <div className="ml-3 ">
         <span className="text-sm font-semibold antialiased block leading-tight">Jorge</span>
         <span className="text-gray-600 text-xs block">Sweden, Malmö</span>
@@ -13,7 +13,7 @@ function Post() {
     
 <a href="#" className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-x hover:bg-gray-100 dark:border-white-900 dark:bg-white-800 dark:hover:bg-white-700">
   
-    <img className="w-full max-w-2xl	max-h-2x1 object-contain" src="https://img.koket.se/standard-mega/pannkaka-ny.jpg" alt=""/>
+    <img className="w-full max-w-lg	max-h-lg object-contain" src="https://images.unsplash.com/photo-1612182062633-9ff3b3598e96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=838&q=80" alt=""/>
    
     <div className="flex flex-col justify-between p-2 mb-10   leading-normal">
 
