@@ -25,9 +25,7 @@ app.use("/post", postRouter);
 app.use("/category", categoryRouter);
 
 mongoose
-  .connect(
-    "mongodb+srv://bakerhaider:hmshood@cluster0.ts1n8aq.mongodb.net/Cluster0?retryWrites=true&w=majority"
-  )
+  .connect("mongodb+srv://bakerhaider:hmshood@cluster0.ts1n8aq.mongodb.net/")
   .then(() => {
     console.log("Connected to MongoDB");
   })
